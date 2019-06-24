@@ -12,3 +12,25 @@
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database()
+  var response;
+  $("#goRepoLink").click(function(){
+    var repoLink = $("#repoLink").val()
+    queryUrl = "/projects/:"+repoLink+"/repository/tree"
+  })
+  $.ajax({
+      type: "method",
+      url: "url",
+      data: "data",
+      dataType: "dataType",
+      success: function (x) {
+        response = x
+      },
+      error: function (response) {
+          $("#errorText").text(JSON.stringify(response))
+        $('#errorModal').modal('toggle')
+      }
+  });
+
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
