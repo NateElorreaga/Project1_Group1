@@ -19,10 +19,10 @@ var settings = {
     "url": https://gitlab.example.de/api/v4/projects/"+id+"/repository/commits,
     "method": "GET",
     "headers": {
-      "PRIVATE-TOKEN": "TOKEN"
+        "PRIVATE-TOKEN": "TOKEN"
     }
-  }
-  
+}
+
 var response;
 $("#goRepoLink").click(function () {
     var repoLink = $("#repoLink").val()
@@ -34,21 +34,21 @@ var settings = {
     type: "GET",
     "async": true,
     "crossDomain": true,
-    url: "https://gitlab.example.de/api/v4/projects/"+id+"/repository/commits",
+    url: "https://gitlab.example.de/api/v4/projects/" + id + "/repository/commits",
     data: "data",
     "method": "GET",
     "headers": {
-      "PRIVATE-TOKEN": "TOKEN"
+        "PRIVATE-TOKEN": "TOKEN"
     },
     error: function (response) {
         $("#errorText").text(JSON.stringify(response))
         $('#errorModal').modal('toggle')
     },
-  }
-  
-  $.ajax(settings).done(function (response) {
+}
+
+$.ajax(settings).done(function (response) {
     console.log(response);
-  });
+});
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
