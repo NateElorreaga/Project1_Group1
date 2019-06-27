@@ -3,4 +3,9 @@ footer.footer {
     bottom: 0;
     width: 100%;
     height: 60px;
+    background-color: #c62828;
+}
+
+body{
+    font-family: 'Bungee Inline', cursive;
 }
