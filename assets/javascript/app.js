@@ -1,3 +1,5 @@
+import { utimesSync } from "fs";
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyAWhGiAZ7wZVq3md9S54IfLqDVVITJpKB4",
@@ -18,36 +20,36 @@ var firebaseConfig = {
  //-------Extra ajax code--------//
 
 var response;
-$("#goRepoLink").click(function () {
-    var repoLink = $("#repoLink").val()
-    var siteUrl = $("#repoLink").val()
+var userInput;
+$("#searchButton").click(function(){
+    userInput= {
+    keyWord = $("#repoLink").val(),
+    zipCode = $("#zipCode").val(),
+    city = $("#city").val(),
+    startDate = $("#startDate").val(),
+    endDate = $("#endDate").val(),
+    sort = $("#sort").val(),
+    //Sorting order of the search result. Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+    //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
+    //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
+    //'venueName,asc', 'venueName,desc', 'random'
+    genre = $("#genre").val(),
+
     queryUrl = "https://gitlab.example.com/api/v4/projects/" + repoLink + "/repository/tree"
-})
+}})
 
-//ajax
-// var settings = {
-//     type: "GET",
-//     url: "https://robby.p.rapidapi.com/search.json?country=US&lng=-74.00597&city=New+York&lat=40.71435&to=2016-08-01T20%3A30%3A00%2B08%3A00&limit=30&distance=10&from=2016-06-30T20%3A30%3A00",
-//     data: "data",
-//     "X-RapidAPI-Host": "robby.p.rapidapi.com",
-//     "X-RapidAPI-Key": "30a1796ba2msh7439ec8fbfa7e5bp1c14b6jsnd18ba567a593",
-//     "method": "GET",
-//     error: function (response) {
-//         $("#errorText").text(JSON.stringify(response))
-//         $('#errorModal').modal('toggle')
-//     },
-// }
+var settings = {
+    url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword="+userInput.keyWord+"&postalCode="+userInput.zipCode+"&city="+userInput.city+"&startDateTime="+userInput.startDate+"&endDateTime="+userInput.endDate+"&sort="+userInput.sort+"&classificationName="+userInpute.genre+"&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+    "method": "GET",
+    error: function (response) {
+        $("#errorText").text(JSON.stringify(response))
+        $('#errorModal').modal('toggle')
+    }
+}
 
-unirest.get("https://robby.p.rapidapi.com/search.json?country=US&lng=-74.00597&city=New+York&lat=40.71435&to=2016-08-01T20%3A30%3A00%2B08%3A00&limit=30&distance=10&from=2016-06-30T20%3A30%3A00")
-.header("X-RapidAPI-Host", "robby.p.rapidapi.com")
-.header("X-RapidAPI-Key", "30a1796ba2msh7439ec8fbfa7e5bp1c14b6jsnd18ba567a593")
-.end(function (result) {
-  console.log(result.status, result.headers, result.body);
+$.ajax(settings).done(function (response) {
+    console.log(response);
 });
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-// });
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
