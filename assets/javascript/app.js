@@ -8,55 +8,42 @@ var firebaseConfig = {
     messagingSenderId: "149291352027",
     appId: "1:149291352027:web:5730c448c25de773"
 };
-// Initialize Firebase
+
+
+//Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 
 // var database = firebase.firestore();
 
-var saltLakeEvents = function(){
-const cheerio = require('cheerio');
-const $ = cheerio.load('https://www.visitsaltlake.com/events/free-events/');
-
-return $("div.results").text()
-
-}
-
-console.log(saltLakeEvents())
  //-------Extra ajax code--------//
 
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": https://gitlab.example.de/api/v4/projects/"+id+"/repository/commits,
-//     "method": "GET",
-//     "headers": {
-//         "PRIVATE-TOKEN": "TOKEN"
-//     }
-// }
+var response;
+$("#goRepoLink").click(function () {
+    var repoLink = $("#repoLink").val()
+    var siteUrl = $("#repoLink").val()
+    queryUrl = "https://gitlab.example.com/api/v4/projects/" + repoLink + "/repository/tree"
+})
 
-// var response;
-// $("#goRepoLink").click(function () {
-//     var repoLink = $("#repoLink").val()
-//     var siteUrl = $("#repoLink").val()
-//     queryUrl = "https://gitlab.example.com/api/v4/projects/" + repoLink + "/repository/tree"
-// })
-
-// //ajax
+//ajax
 // var settings = {
 //     type: "GET",
-//     "async": true,
-//     "crossDomain": true,
-//     url: https://hxtsoafqna.execute-api.us-east-1.amazonaws.com/stage/api,
+//     url: "https://robby.p.rapidapi.com/search.json?country=US&lng=-74.00597&city=New+York&lat=40.71435&to=2016-08-01T20%3A30%3A00%2B08%3A00&limit=30&distance=10&from=2016-06-30T20%3A30%3A00",
 //     data: "data",
+//     "X-RapidAPI-Host": "robby.p.rapidapi.com",
+//     "X-RapidAPI-Key": "30a1796ba2msh7439ec8fbfa7e5bp1c14b6jsnd18ba567a593",
 //     "method": "GET",
-//     "headers": {
-//         "PRIVATE-TOKEN": "TOKEN"
-//     },
 //     error: function (response) {
 //         $("#errorText").text(JSON.stringify(response))
 //         $('#errorModal').modal('toggle')
 //     },
 // }
+
+unirest.get("https://robby.p.rapidapi.com/search.json?country=US&lng=-74.00597&city=New+York&lat=40.71435&to=2016-08-01T20%3A30%3A00%2B08%3A00&limit=30&distance=10&from=2016-06-30T20%3A30%3A00")
+.header("X-RapidAPI-Host", "robby.p.rapidapi.com")
+.header("X-RapidAPI-Key", "30a1796ba2msh7439ec8fbfa7e5bp1c14b6jsnd18ba567a593")
+.end(function (result) {
+  console.log(result.status, result.headers, result.body);
+});
 
 // $.ajax(settings).done(function (response) {
 //     console.log(response);
