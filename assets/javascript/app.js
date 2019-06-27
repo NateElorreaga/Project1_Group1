@@ -9,6 +9,7 @@ var firebaseConfig = {
     appId: "1:149291352027:web:5730c448c25de773"
 };
 // Initialize Firebase
+
 // firebase.initializeApp(firebaseConfig);
 
 // var database = firebase.firestore();
@@ -61,6 +62,7 @@ console.log(saltLakeEvents())
 // $.ajax(settings).done(function (response) {
 //     console.log(response);
 // });
+
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
