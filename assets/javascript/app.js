@@ -1,4 +1,3 @@
-import { utimesSync } from "fs";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
