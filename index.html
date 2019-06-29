@@ -138,25 +138,84 @@
     <!-- Search Link -->
     <div class="card my-3 mx-auto">
       <div class="card-header text-light text-center" style="background-color: #000000;">
-        Header text
+        Looking for something to do?
       </div>
+
       <div class="card-body">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Concerts" id="search">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="searchButton">Go</button>
+
+        <!-- Extra large modal -->
+        <button type="button" class="btn btn-secondary btn-md btn-block w-75 mx-auto" data-toggle="modal"
+          data-target=".bd-example-modal-xl">Search Events</button>
+
+        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+              <!-- input form -->
+              <div class="card card-body">
+                <!-- inside modal -->
+                <form>
+                  <!-- input 1` -->
+                  <div class="form-row">
+                    <div class="form-group col">
+                      <label for="search">Search Events</label>
+                      <input type="text" class="form-control" id="search">
+                    </div>
+                  </div>
+                  <!-- inputs 2 -->
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label for="zipCode">Zip Code</label>
+                      <input type="text" class="form-control" id="zipCode">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="genere">Event Type</label>
+                      <input type="text" class="form-control" id="genre">
+                    </div>
+                  </div>
+                  <!-- input 3 -->
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label for="startDate">Date of Event</label>
+                      <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
+                        max="2022-12-31">
+                    </div>
+                  </div>
+
+                  <!-- <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="dropdown" id="sort">
+                      <label class="form-check-label" for="gridCheck">
+                        Filter
+                      </label>
+                    </div>
+                  </div> -->
+                  
+                  <button type="submit" class="btn btn-dark" id="searchButton">Search</button>
+                </form>
+              </div>
+              <!-- <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Concerts" id="search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary d-lg-block" type="button" id="searchButton">Go</button>
+                  </div>
+                </div> -->
+            </div>
+            <!-- input form -->
+
           </div>
         </div>
       </div>
-      <div class="card-footer text-light text-center" style="background-color: #000000;">
-        Footer text
-      </div>
+      <!-- Extra large modal end -->
+
     </div>
+    <div class="card-footer text-light text-center p-4" style="background-color: #000000;">
+      <!-- Footer text -->
 
 
-
-    <!-- Error Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" id="errorModal"
+  <!-- Error Modal -->
+  <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" id="errorModal"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -168,13 +227,15 @@
           </div>
           <div class="modal-body" id="errorText">
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
+
 
   </div>
   <!-- Main container end -->
@@ -182,8 +243,8 @@
   <!-- Footer -->
   <footer id="footer" class="sticky-footer" style="background-color:#c62828;;">
     <div class="container">
-      <div class="card-footer text-light">
-        footer
+      <div class="card-footer text-light p-4">
+
       </div>
     </div>
   </footer>
