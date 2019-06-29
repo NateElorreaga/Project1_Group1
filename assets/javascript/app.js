@@ -19,7 +19,7 @@ var firebaseConfig = {
 //-------Extra ajax code--------//
 
 var response;
-//$("#searchButton").click(function () {
+$("#searchButton").click(function () {
 
     //-----------------------------------------------------------------------//
 
@@ -36,9 +36,8 @@ var response;
     var userInput = {
         keyWord: "&keyword=" + $("#search").val(),
         zipCode: "&postalCode=" + $("#zipCode").val(),
-        city: "&city=" + $("#city").val(),
+        radius: "&radius=" + $("#city").val() + "&unit=miles",
         startDate: "&startDateTime=" + $("#startDate").val(),
-        endDate: "&endDateTime=" + $("#endDate").val(),
         genre: "&classificationName=" + $("#genre").val(),
         sort: "&sort=" + $("#sort").val(),
         
@@ -49,27 +48,40 @@ var response;
     }
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
+    // and sets location default to sandy
     for (prop in userInput) {
-        console.log(userInput.prop)
-        if (userInput.prop===undefined){userInput.prop = "" }
-        settings.url = settings.url + userInput.prop
+        if (userInput[prop].includes('undefined')){userInput[prop] = ""}
+        if (userInput.zipCode===""){userInput.zipCode = "&postalCode=84070";}
+        if (userInput.radius===""){userInput.radius = "&radius=25&unit=miles";}
+        settings.url = settings.url + userInput[prop];
     }
-
-    // sets default location to salt lake city
-    // userInput.city = 
 
 
     // double checks url before sent to api for response
     console.log(settings.url)
-
-    console.log(userInput)
     //---------------------------------------------------------------------------------------//
 
-    // Calls ajax using link put together above
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-//})
+// Calls ajax using link put together above
+$.ajax(settings).then(function(response){
+    console.log(response);
+        for (var i = 0; i < response._embedded.events.length; i++) {
+            var event = response._embedded.events[i];
+            var eventName = $("<h2>").text(response._embedded.events[i].name);
+            var eventUrl = $("<h2>").text(response._embedded.events[i].url);
+            var eventDate = $("<h2>").text(response._embedded.events[i].dates.start);
+            var eventGenre = $("<h2>").text(response._embedded.events[i].genre);
+
+             console.log(eventName);
+            // var imageURL = event.images.fixed_height_still.url;
+        //     var eventImage = $("<img>");
+        //    eventImage.attr("src", imageURL);
+        //    eventImage.attr("class", "gif");
+        //    eventImage.attr("alt-image", event.images.fixed_height.url);
+             $(".container-results").append(eventName, eventUrl, eventDate, eventGenre);
+        }
+ })
+
+})
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
