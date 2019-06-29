@@ -22,23 +22,23 @@ var response;
 var userInput;
 $("#searchButton").click(function(){
     userInput= {
-    keyWord = $("#repoLink").val(),
-    zipCode = $("#zipCode").val(),
-    city = $("#city").val(),
-    startDate = $("#startDate").val(),
-    endDate = $("#endDate").val(),
-    sort = $("#sort").val(),
-    //Sorting order of the search result. Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+    keyWord: '&keyword='+$("#search").val(),
+    zipCode: "&postalCode="+$("#zipCode").val(),
+    city: "&city="+$("#city").val(),
+    startDate: "&startDateTime="+$("#startDate").val(),
+    endDate: "&endDateTime="+$("#endDate").val(),
+    sort: "&sort="+$("#sort").val(),
+
+    //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
     //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
     //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
     //'venueName,asc', 'venueName,desc', 'random'
-    genre = $("#genre").val(),
+    genre: "&classificationName="+$("#genre").val(),
+}
 
-    queryUrl = "https://gitlab.example.com/api/v4/projects/" + repoLink + "/repository/tree"
-}})
-
+//initializes ajax settings
 var settings = {
-    url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword="+userInput.keyWord+"&postalCode="+userInput.zipCode+"&city="+userInput.city+"&startDateTime="+userInput.startDate+"&endDateTime="+userInput.endDate+"&sort="+userInput.sort+"&classificationName="+userInpute.genre+"&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+    url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
     "method": "GET",
     error: function (response) {
         $("#errorText").text(JSON.stringify(response))
@@ -46,9 +46,17 @@ var settings = {
     }
 }
 
+// for looping over userInputs to make sure empty properties dont break the link with undefined
+for(prop in userInput){
+    if (userInput.prop===undefined || userInput.prop===null){userInput.prop = ""}
+    else {settings.url = settings.url + userInput.prop}
+}
+
+// Calls ajax using link put together above
 $.ajax(settings).done(function (response) {
     console.log(response);
 });
+})
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
