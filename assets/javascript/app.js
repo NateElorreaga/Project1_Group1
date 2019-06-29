@@ -38,7 +38,6 @@ $("#searchButton").click(function () {
         zipCode: "&postalCode=" + $("#zipCode").val(),
         radius: "&radius=" + $("#city").val() + "&unit=miles",
         startDate: "&startDateTime=" + $("#startDate").val(),
-        endDate: "&endDateTime=" + $("#endDate").val(),
         genre: "&classificationName=" + $("#genre").val(),
         sort: "&sort=" + $("#sort").val(),
         //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
@@ -48,6 +47,7 @@ $("#searchButton").click(function () {
     }
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
+    // and sets location default to sandy
     for (prop in userInput) {
         if (userInput[prop].includes('undefined')){userInput[prop] = ""}
         if (userInput.zipCode===""){userInput.zipCode = "&postalCode=84070";}
@@ -55,8 +55,6 @@ $("#searchButton").click(function () {
         settings.url = settings.url + userInput[prop];
     }
 
-    // sets default location to salt lake city
-    // userInput.city = 
 
     // double checks url before sent to api for response
     console.log(settings.url)
