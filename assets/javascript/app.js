@@ -41,6 +41,7 @@ var response;
         endDate: "&endDateTime=" + $("#endDate").val(),
         genre: "&classificationName=" + $("#genre").val(),
         sort: "&sort=" + $("#sort").val(),
+        
         //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
         //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
