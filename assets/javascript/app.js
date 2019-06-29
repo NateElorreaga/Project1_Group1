@@ -21,55 +21,65 @@ var firebaseConfig = {
 var response;
 //$("#searchButton").click(function () {
 
-    //-----------------------------------------------------------------------//
+//-----------------------------------------------------------------------//
 
-    //initializes ajax settings
-    var settings = {
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
-        "method": "GET",
-        "error": function (response) {
-            $("#errorText").text(JSON.stringify(response))
-            $('#errorModal').modal('toggle')
+//initializes ajax settings
+var settings = {
+    url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+    "method": "GET",
+    "error": function(response) {
+        $("#errorText").text(JSON.stringify(response))
+        $('#errorModal').modal('toggle')
+    }
+}
+
+var userInput = {
+    keyWord: "&keyword=" + $("#search").val(),
+    zipCode: "&postalCode=" + $("#zipCode").val(),
+    city: "&city=" + $("#city").val(),
+    startDate: "&startDateTime=" + $("#startDate").val(),
+    endDate: "&endDateTime=" + $("#endDate").val(),
+    genre: "&classificationName=" + $("#genre").val(),
+    sort: "&sort=" + $("#sort").val(),
+    //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+    //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
+    //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
+    //'venueName,asc', 'venueName,desc', 'random'
+}
+
+// for looping over userInputs to make sure empty properties dont break the link with undefined
+for (prop in userInput) {
+    console.log(userInput.prop)
+    if (userInput.prop === undefined) { userInput.prop = "" }
+    settings.url = settings.url + userInput.prop
+}
+
+// sets default location to salt lake city
+// userInput.city = 
+
+
+// double checks url before sent to api for response
+console.log(settings.url)
+
+console.log(userInput)
+//---------------------------------------------------------------------------------------//
+
+// Calls ajax using link put together above
+$.ajax(settings).then(function(response){
+    console.log(response);
+        for (var i = 0; i < response._embedded.events.length; i++) {
+            var event = response._embedded.events[i];
+            var eventName = $("<h2>").text(response._embedded.events[i].name);
+             console.log(eventName);
+            // var imageURL = event.images.fixed_height_still.url;
+        //     var eventImage = $("<img>");
+        //    eventImage.attr("src", imageURL);
+        //    eventImage.attr("class", "gif");
+        //    eventImage.attr("alt-image", event.images.fixed_height.url);
+             $(".container-results").append(eventName);
         }
-    }
+ })
 
-    var userInput = {
-        keyWord: "&keyword=" + $("#search").val(),
-        zipCode: "&postalCode=" + $("#zipCode").val(),
-        city: "&city=" + $("#city").val(),
-        startDate: "&startDateTime=" + $("#startDate").val(),
-        endDate: "&endDateTime=" + $("#endDate").val(),
-        genre: "&classificationName=" + $("#genre").val(),
-        sort: "&sort=" + $("#sort").val(),
-        //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-        //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-        //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-        //'venueName,asc', 'venueName,desc', 'random'
-    }
-
-    // for looping over userInputs to make sure empty properties dont break the link with undefined
-    for (prop in userInput) {
-        console.log(userInput.prop)
-        if (userInput.prop===undefined){userInput.prop = "" }
-        settings.url = settings.url + userInput.prop
-    }
-
-    // sets default location to salt lake city
-    // userInput.city = 
-
-
-    // double checks url before sent to api for response
-    console.log(settings.url)
-
-    console.log(userInput)
-    //---------------------------------------------------------------------------------------//
-
-    // Calls ajax using link put together above
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-//})
-
-$('#myModal').on('shown.bs.modal', function () {
+$('#myModal').on('shown.bs.modal', function() {
     $('#myInput').trigger('focus')
 })
