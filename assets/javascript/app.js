@@ -70,13 +70,17 @@ $.ajax(settings).then(function(response){
         for (var i = 0; i < response._embedded.events.length; i++) {
             var event = response._embedded.events[i];
             var eventName = $("<h2>").text(response._embedded.events[i].name);
+            var eventUrl = $("<h2>").text(response._embedded.events[i].url);
+            var eventDate = $("<h2>").text(response._embedded.events[i].dates.start);
+            var eventGenre = $("<h2>").text(response._embedded.events[i].genre);
+
              console.log(eventName);
             // var imageURL = event.images.fixed_height_still.url;
         //     var eventImage = $("<img>");
         //    eventImage.attr("src", imageURL);
         //    eventImage.attr("class", "gif");
         //    eventImage.attr("alt-image", event.images.fixed_height.url);
-             $(".container-results").append(eventName);
+             $(".container-results").append(eventName, eventUrl, eventDate, eventGenre);
         }
  })
 
