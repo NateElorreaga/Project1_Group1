@@ -1,4 +1,3 @@
-import { utimesSync } from "fs";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -17,39 +16,59 @@ var firebaseConfig = {
 
 // var database = firebase.firestore();
 
- //-------Extra ajax code--------//
+//-------Extra ajax code--------//
 
 var response;
-var userInput;
-$("#searchButton").click(function(){
-    userInput= {
-    keyWord = $("#repoLink").val(),
-    zipCode = $("#zipCode").val(),
-    city = $("#city").val(),
-    startDate = $("#startDate").val(),
-    endDate = $("#endDate").val(),
-    sort = $("#sort").val(),
-    //Sorting order of the search result. Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-    //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-    //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-    //'venueName,asc', 'venueName,desc', 'random'
-    genre = $("#genre").val(),
+//$("#searchButton").click(function () {
 
-    queryUrl = "https://gitlab.example.com/api/v4/projects/" + repoLink + "/repository/tree"
-}})
+    //-----------------------------------------------------------------------//
 
-var settings = {
-    url: "https://app.ticketmaster.com/discovery/v2/events.json?keyword="+userInput.keyWord+"&postalCode="+userInput.zipCode+"&city="+userInput.city+"&startDateTime="+userInput.startDate+"&endDateTime="+userInput.endDate+"&sort="+userInput.sort+"&classificationName="+userInpute.genre+"&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
-    "method": "GET",
-    error: function (response) {
-        $("#errorText").text(JSON.stringify(response))
-        $('#errorModal').modal('toggle')
+    //initializes ajax settings
+    var settings = {
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+        "method": "GET",
+        "error": function (response) {
+            $("#errorText").text(JSON.stringify(response))
+            $('#errorModal').modal('toggle')
+        }
     }
-}
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+    var userInput = {
+        keyWord: "&keyword=" + $("#search").val(),
+        zipCode: "&postalCode=" + $("#zipCode").val(),
+        city: "&city=" + $("#city").val(),
+        startDate: "&startDateTime=" + $("#startDate").val(),
+        endDate: "&endDateTime=" + $("#endDate").val(),
+        genre: "&classificationName=" + $("#genre").val(),
+        sort: "&sort=" + $("#sort").val(),
+        //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+        //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
+        //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
+        //'venueName,asc', 'venueName,desc', 'random'
+    }
+
+    // for looping over userInputs to make sure empty properties dont break the link with undefined
+    for (prop in userInput) {
+        console.log(userInput.prop)
+        if (userInput.prop===undefined){userInput.prop = "" }
+        settings.url = settings.url + userInput.prop
+    }
+
+    // sets default location to salt lake city
+    // userInput.city = 
+
+
+    // double checks url before sent to api for response
+    console.log(settings.url)
+
+    console.log(userInput)
+    //---------------------------------------------------------------------------------------//
+
+    // Calls ajax using link put together above
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+//})
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
