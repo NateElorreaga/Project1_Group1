@@ -19,7 +19,7 @@ var firebaseConfig = {
 //-------Extra ajax code--------//
 
 var response;
-//$("#searchButton").click(function () {
+$("#searchButton").click(function () {
 
     //-----------------------------------------------------------------------//
 
@@ -36,7 +36,7 @@ var response;
     var userInput = {
         keyWord: "&keyword=" + $("#search").val(),
         zipCode: "&postalCode=" + $("#zipCode").val(),
-        city: "&city=" + $("#city").val(),
+        radius: "&radius=" + $("#city").val() + "&unit=miles",
         startDate: "&startDateTime=" + $("#startDate").val(),
         endDate: "&endDateTime=" + $("#endDate").val(),
         genre: "&classificationName=" + $("#genre").val(),
@@ -49,9 +49,10 @@ var response;
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     for (prop in userInput) {
-        console.log(userInput.prop)
-        if (userInput.prop===undefined){userInput.prop = "" }
-        settings.url = settings.url + userInput.prop
+        if (userInput[prop].includes('undefined')){userInput[prop] = ""}
+        if (userInput.zipCode===""){userInput.zipCode = "&postalCode=84070";}
+        if (userInput.radius===""){userInput.radius = "&radius=25&unit=miles";}
+        settings.url = settings.url + userInput[prop]
     }
 
     // sets default location to salt lake city
@@ -60,15 +61,13 @@ var response;
 
     // double checks url before sent to api for response
     console.log(settings.url)
-
-    console.log(userInput)
     //---------------------------------------------------------------------------------------//
 
     // Calls ajax using link put together above
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
-//})
+})
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
