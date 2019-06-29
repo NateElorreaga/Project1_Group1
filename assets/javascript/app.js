@@ -49,7 +49,6 @@ $("#searchButton").click(function () {
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     for (prop in userInput) {
-        console.log(userInput[prop])
         if (userInput[prop].includes('undefined')){userInput[prop] = ""}
         if (userInput.zipCode===""){userInput.zipCode = "&postalCode=84070";}
         if (userInput.radius===""){userInput.radius = "&radius=25&unit=miles";}
@@ -62,8 +61,6 @@ $("#searchButton").click(function () {
 
     // double checks url before sent to api for response
     console.log(settings.url)
-
-    console.log(userInput)
     //---------------------------------------------------------------------------------------//
 
     // Calls ajax using link put together above
