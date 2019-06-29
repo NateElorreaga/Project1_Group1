@@ -49,9 +49,9 @@ $("#searchButton").click(function () {
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     for (prop in userInput) {
-        if (userInput[prop].includes('undefined')){userInput[prop] = ""}
-        if (userInput.zipCode===""){userInput.zipCode = "&postalCode=84070";}
-        if (userInput.radius===""){userInput.radius = "&radius=25&unit=miles";}
+        if (userInput[prop].includes('undefined')) { userInput[prop] = "" }
+        if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=84070"; }
+        if (userInput.radius === "") { userInput.radius = "&radius=25&unit=miles"; }
         settings.url = settings.url + userInput[prop];
     }
 
@@ -62,25 +62,29 @@ $("#searchButton").click(function () {
     console.log(settings.url)
     //---------------------------------------------------------------------------------------//
 
-// Calls ajax using link put together above
-$.ajax(settings).then(function(response){
-    console.log(response);
+    // Calls ajax using link put together above
+    $.ajax(settings).then(function (response) {
+        console.log(response);
+        $(".container-results").empty();
         for (var i = 0; i < response._embedded.events.length; i++) {
-            var event = response._embedded.events[i];
-            var eventName = $("<h2>").text(response._embedded.events[i].name);
-            var eventUrl = $("<h2>").text(response._embedded.events[i].url);
-            var eventDate = $("<h2>").text(response._embedded.events[i].dates.start);
-            var eventGenre = $("<h2>").text(response._embedded.events[i].genre);
+            // var event = response._embedded.events[i];
+            var eventName = response._embedded.events[i].name;
+            // var eventUrl = response._embedded.events[i].url;
+            var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
+            var imageURL = (response._embedded.events[i].images[0].url);
 
-             console.log(eventName);
-            // var imageURL = event.images.fixed_height_still.url;
-        //     var eventImage = $("<img>");
-        //    eventImage.attr("src", imageURL);
-        //    eventImage.attr("class", "gif");
-        //    eventImage.attr("alt-image", event.images.fixed_height.url);
-             $(".container-results").append(eventName, eventUrl, eventDate, eventGenre);
+            var resultsDiv = `<div class="col-md-4">
+            <img src="${imageURL}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${eventName}</h5>
+            <p class="card-text">${eventDate}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            </div>`
+            $(".container-results").append(resultsDiv);
         }
- })
+    })
 
 })
 
