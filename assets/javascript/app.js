@@ -66,13 +66,11 @@ $("#searchButton").click(function () {
         console.log(response);
         $(".container-results").empty();
         for (var i = 0; i < response._embedded.events.length; i++) {
-            // var event = response._embedded.events[i];
             var eventName = response._embedded.events[i].name;
-            // var eventUrl = response._embedded.events[i].url;
             var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
             var imageURL = (response._embedded.events[i].images[0].url);
 
-            var resultsDiv = `<div class="col-md-4">
+            var resultsDiv = `<div class="col-md-6">
             <img src="${imageURL}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${eventName}</h5>
