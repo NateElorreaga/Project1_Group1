@@ -1,31 +1,37 @@
 <!doctype html>
 <html lang="en">
 
-<title>Events Home Page</title>
+<title>EventEasy Home Page</title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!-- FONT AWESOME CDN -->
+<script src="https://kit.fontawesome.com/2955fdb918.js"></script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <!-- Compiled and minified CSS  -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+<!--Google Fonts CDN-->
 <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
+<!--External Stylesheet-->
 <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
-<body class="bg-light">
+<body> 
+    <div class="bg-light">
+
 
   <!-- Navbar start -->
-  <nav class="navbar navbar-dark" style="background-color: #c62828 ;">
+  <nav class="navbar navbar-dark">
 
     <!-- Navbar content -->
-    <a class="navbar-brand" href="index.html" style="font-family: 'Bungee Inline', cursive;">
-      <img src="assets/images/utesIcon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-      Home
+    <a class="navbar-brand" href="index.html">
+      <i class="fab fa-jenkins"></i>
+      EventEasy
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,13 +40,13 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav text-right">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="content.html">Subjects</a>
+          <a class="nav-link" href="results.html"> Concert Tickets</a>
         </li>
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Dropdown link
@@ -50,7 +56,7 @@
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </li>
+        </li> -->
       </ul>
   </nav>
 
@@ -59,7 +65,7 @@
 
     <!-- Top banner -->
     <div class="card mt-4">
-      <div class="card-body" style="background-color: #000000; font-family: 'Bungee Inline', cursive;">
+      <div class="card-body" id="homePageJumbo">
         <h1 class="display-3 text-light text-center " value="">Upcoming Events</h1>
       </div>
     </div>
@@ -144,7 +150,7 @@
       <div class="card-body">
 
         <!-- Extra large modal -->
-        <button type="button" class="btn btn-secondary btn-md btn-block w-75 mx-auto" data-toggle="modal"
+        <button type="button" class="btn btn-success btn-md btn-block w-75 mx-auto" data-toggle="modal"
           data-target=".bd-example-modal-xl">Search Events</button>
 
         <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
@@ -156,14 +162,14 @@
               <div class="card card-body">
                 <!-- inside modal -->
                 <form>
-                  <!-- input 1` -->
+                  <!-- input 1` 
                   <div class="form-row">
                     <div class="form-group col">
                       <label for="search">Search Events</label>
                       <input type="text" class="form-control" id="search">
                     </div>
                   </div>
-                  <!-- inputs 2 -->
+                    inputs 2 -->
                   <div class="form-row">
                     <div class="form-group col-6">
                       <label for="zipCode">Zip Code</label>
@@ -191,7 +197,7 @@
                       </label>
                     </div>
                   </div> -->
-                  
+
                   <button type="submit" class="btn btn-dark" id="searchButton">Search</button>
                 </form>
               </div>
@@ -210,12 +216,12 @@
       <!-- Extra large modal end -->
 
     </div>
-    <div class="card-footer text-light text-center p-4" style="background-color: #000000;">
-      <!-- Footer text -->
+    <!-- <div class="card-footer text-light text-center p-4" style="background-color: #000000;"> -->
+    <!-- Footer text -->
 
 
-  <!-- Error Modal -->
-  <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" id="errorModal"
+    <!-- Error Modal -->
+    <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" id="errorModal"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -237,39 +243,45 @@
     </div>-->
 
 
+    <!-- </div> -->
+    <!-- Main container end -->
   </div>
-  <!-- Main container end -->
-
-  <!-- Footer -->
-  <footer id="footer" class="sticky-footer" style="background-color:#c62828;;">
-    <div class="container">
-      <div class="card-footer text-light p-4">
-
+  <br>
+  <br>
+  <br>
+    <!-- Footer -->
+    <footer id="footer" class="sticky-footer">
+      <div class="container">
+        <div class="card-footer text-light p-4">
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
 
 
-  <!-- Bootstrap JavaScript -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 
-  <!-- Compiled and minified JavaScript for maaterialize -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <!-- Compiled and minified JavaScript for maaterialize -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    
+    <!--Firebase CDN-->
+    <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
+    <!--Moment.js CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
-  <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
