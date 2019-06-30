@@ -1,31 +1,35 @@
 <!doctype html>
 <html lang="en">
 
-<title>Search Results Display</title>
+<title>EventEasy Concerts</title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- FONT AWESOME CDN -->
+<script src="https://kit.fontawesome.com/2955fdb918.js"></script>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <!-- Compiled and minified CSS  -->
+<!--Google Fonts CDN-->
+<link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-
 <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
-<body class="bg-light">
+<body>
+    <div class="bg-light">
 
     <!-- Navbar start -->
-    <nav class="navbar navbar-dark" style="background-color: #000000;">
+    <nav class="navbar navbar-dark">
 
         <!-- Navbar content -->
         <a class="navbar-brand" href="index.html">
-            <img src="https://via.placeholder.com/50" width="30" height="30" class="d-inline-block align-top" alt="">
-            Home
+            <i class="fab fa-jenkins"></i>
+            EventEasy
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,14 +37,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav text-right">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="results.html">Subjects</a>
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <!--Made the current page "active" (brighter than Home page)-->
+                <li class="nav-item active">
+                    <a class="nav-link" href="results.html">Concert Tickets</a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown link
@@ -50,14 +55,14 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
     </nav>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Concerts" id="search">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="searchButton">Go</button>
-        </div>
+    <br>
+    <br>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search for Concerts" id="search">
+        <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
     </div>
 
 
@@ -66,13 +71,12 @@
 
     </div>
     <!-- Main container end -->
-
+</div>
     
     <!-- Footer -->
-    <footer id="footer" class="footer" style="background-color:#c62828; position: absolute; bottom: 0; width: 100%">
+    <footer id="footer" class="sticky-footer">
         <div class="container">
             <div class="card-footer text-light">
-                footer
             </div>
         </div>
     </footer>
@@ -95,9 +99,13 @@
 
     <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
 
+    <!--Moment.js CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
     <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>

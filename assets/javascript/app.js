@@ -68,20 +68,29 @@ $("#searchButton").click(function () {
         for (var i = 0; i < response._embedded.events.length; i++) {
             var eventName = response._embedded.events[i].name;
             var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
-            var imageURL = (response._embedded.events[i].images[0].url);
+            var imageURL = (response._embedded.events[i].images[9].url);
+            //links to the URL to purchase tickets 
+            var linkURL = (response._embedded.events[i].url);
 
-            var resultsDiv = `<div class="col-md-6">
-            <img src="${imageURL}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">${eventName}</h5>
-            <p class="card-text">${eventDate}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            </div>
-            </div>`
+            var resultsDiv = `<div class="col-md-4">
+                                <img src="${imageURL}" class="card-img-top">
+                                <div class="card-body" id="results-card">
+                                    <h5 class="card-title">${eventName}</h5>
+                                    <p class="card-text">${eventDate}</p>
+                                    <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
+                                </div>
+                            </div>`;
             $(".container-results").append(resultsDiv);
-        }
-    })
+
+            //TRYING TO CONVERT DATES AND TIMES
+            // var date = response._embedded.events[i].dates.start.localDate;
+            // var time = response._embedded.events[i].dates.start.localTime;
+
+            // var updatedDate = moment(date)._d;
+            // console.log(updatedDate);
+            // console.log(time);
+        };
+    });
 
 })
 
