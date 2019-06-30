@@ -7,14 +7,27 @@ footer {
 
 .bg-light{
     font-family: 'Bungee Inline', cursive;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+/* <<<<<<< HEAD
     height: 100%;
     position: relative;
 }
 
 .container-results{
     min-height: 100vh; /* will cover the 100% of viewport */
-    overflow: hidden;
+    /* overflow: hidden;
     display: block;
     position: relative;
-    padding-bottom: 100px; /* height of your footer */
-}
+    padding-bottom: 100px; height of your footer
+}  */
