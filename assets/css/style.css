@@ -1,18 +1,27 @@
 body{
-    font-family: 'Bungee Inline', cursive;
+    /* font-family: 'Bungee Inline', cursive; */
+    /* font-family: 'Pacifico', cursive; */
+    background:url(../images/concrete-texture.png);
 }
 
 .navbar{
-    border-bottom: 7px solid #4F6367;
+    border-bottom: 3px solid #FE5F55;
     background-color: #7A9E9F;
     border-radius: 1px;
-    border-top: 7px solid #4F6367;
+    border-top: 3px solid #FE5F55;
+    font-family: 'Pacifico', cursive;
+}
+.navbar-brand{
+    font-size: 40px;
+}
+.nav-link{
+    font-family: 'Quicksand', sans-serif;
 }
 
 .bg-light{
     height: 100%;
     position: relative;
-    background:url(/assets/images/concrete-texture.png);
+    background:url(../images/concrete-texture.png);
 }
 
 
@@ -42,24 +51,34 @@ label {
 }
 
 .sticky-footer{
-    border-bottom: 7px solid #4F6367;
-    border-top: 7px solid #4F6367;
-    background-color: #7A9E9F;
     position: relative;
     margin:0;
     left:0;
     bottom:0;
-    width: 100%
+    width: 100%;
+    border-bottom: 3px solid #FE5F55;
+    background-color: #7A9E9F;
+    border-radius: 1px;
+    border-top: 3px solid #FE5F55;
+    height:67px;
 }
 
 
 #homePageJumbo{
-    border-style: inset;
-     border-width: 7px;
-      border-color: #EEF5DB;
-       background-color:#FE5F55
-     
+    border-radius: 5px;
+    padding: 10px;
+    background-color:#FE5F55;
+   
+       
+       
+}
+.carouselImages{
+    border-radius: 5px;;
+}
 
+#jumbo-text{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 80px;
 }
 
 .input-group{
@@ -67,9 +86,50 @@ label {
     width: 70%;
 }
 #searchButton{
-    height: 42px;
+    height: 55px;
     margin-left: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    background-color: #FE5F55;
+    border: 7px double white;
+    color:white;
 }
 #results-card{
     text-align: center;
+}
+
+.card-header{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    background-color:#7A9E9F;
+}
+
+#searchButtonHomePage{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    background-color: #FE5F55;
+    border: 7px double white;
+    color:white;
+    
+}
+#buy-tickets{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    background-color: #FE5F55;
+    border: 7px double white;
+    color:white;
+}
+.card-img-top{
+    border-radius: 5px;
+}
+.card-text{
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.card-title{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+
 }

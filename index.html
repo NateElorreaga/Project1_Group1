@@ -15,7 +15,8 @@
 <!-- Compiled and minified CSS  -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 <!--Google Fonts CDN-->
-<link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
 <!--External Stylesheet-->
 <link rel="stylesheet" href="assets/css/style.css">
 
@@ -23,8 +24,6 @@
 
 <body> 
     <div class="bg-light">
-
-
   <!-- Navbar start -->
   <nav class="navbar navbar-dark">
 
@@ -66,7 +65,7 @@
     <!-- Top banner -->
     <div class="card mt-4">
       <div class="card-body" id="homePageJumbo">
-        <h1 class="display-3 text-light text-center " value="">Upcoming Events</h1>
+        <h1 class="display-4 text-light text-center " id="jumbo-text">Upcoming Events</h1>
       </div>
     </div>
 
@@ -83,7 +82,7 @@
 
         <!-- slide 1 -->
         <div class="carousel-item active">
-          <img src="assets/images/band.jpg" alt="First slide">
+          <img class="carouselImages" src="assets/images/band.jpg" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -92,7 +91,7 @@
 
         <!-- slide 2 -->
         <div class="carousel-item">
-          <img src="assets/images/stadium.jpeg" alt="Second slide">
+          <img class="carouselImages" src="assets/images/stadium.jpeg" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -101,7 +100,7 @@
 
         <!-- slide 3 -->
         <div class="carousel-item">
-          <img src="assets/images/hotAirBalloon.jpg" alt="Third slide">
+          <img class="carouselImages" src="assets/images/hotAirBalloon.jpg" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -111,7 +110,7 @@
 
         <!-- slide 4 -->
         <div class="carousel-item">
-          <img src="assets/images/farmersMarket.jpg" alt="Fourth slide">
+          <img class="carouselImages" src="assets/images/farmersMarket.jpg" alt="Fourth slide">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -121,7 +120,7 @@
 
         <!-- slide 5 -->
         <div class="carousel-item">
-          <img src="assets/images/car show.jpg" alt="Fifth slide">
+          <img class="carouselImages" src="assets/images/car show.jpg" alt="Fifth slide">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -143,14 +142,14 @@
 
     <!-- Search Link -->
     <div class="card my-3 mx-auto">
-      <div class="card-header text-light text-center" style="background-color: #000000;">
+      <div class="card-header text-light text-center">
         Looking for something to do?
       </div>
 
       <div class="card-body">
 
         <!-- Extra large modal -->
-        <button type="button" class="btn btn-success btn-md btn-block w-75 mx-auto" data-toggle="modal"
+        <button id="searchButtonHomePage" type="button" class="btn btn-success btn-md btn-block w-75 mx-auto" data-toggle="modal"
           data-target=".bd-example-modal-xl">Search Events</button>
 
         <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
@@ -246,14 +245,13 @@
     <!-- </div> -->
     <!-- Main container end -->
   </div>
+</div>
   <br>
   <br>
   <br>
-    <!-- Footer -->
+ <!-- Footer -->
     <footer id="footer" class="sticky-footer">
       <div class="container">
-        <div class="card-footer text-light p-4">
-        </div>
       </div>
     </footer>
 
