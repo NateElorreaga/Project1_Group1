@@ -72,7 +72,7 @@ $("#searchButton").click(function () {
             //links to the URL to purchase tickets 
             var linkURL = (response._embedded.events[i].url);
 
-            var date = moment(eventDate).format('MMMM Do YYYY, h:mm:ss a');
+            var date = moment(eventDate).format('MMMM Do YYYY, h:mm a');
 
             var resultsDiv = `<div class="col-md-4">
             <img src="${imageURL}" class="card-img-top">
