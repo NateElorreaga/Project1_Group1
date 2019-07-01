@@ -84,14 +84,6 @@ $("#searchButton").click(function () {
                             </div>`;
             $(".container-results").append(resultsDiv);
 
-            //TRYING TO CONVERT DATES AND TIMES
-            // var date = response._embedded.events[i].dates.start.localDate;
-            // var time = response._embedded.events[i].dates.start.localTime;
-
-            // var updatedDate = moment(date)._d;
-            // console.log(updatedDate);
-            // console.log(time);
-
         };
     });
 
