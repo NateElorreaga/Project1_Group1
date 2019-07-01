@@ -40,7 +40,7 @@ $("#searchButton").click(function () {
         startDate: "&startDateTime=" + $("#startDate").val(),
         genre: "&classificationName=" + $("#genre").val(),
         sort: "&sort=" + $("#sort").val(),
-        
+
         //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
         //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
@@ -72,12 +72,14 @@ $("#searchButton").click(function () {
             //links to the URL to purchase tickets 
             var linkURL = (response._embedded.events[i].url);
 
+            var date = moment(eventDate).format('MMMM Do YYYY, h:mm:ss a');
+
             var resultsDiv = `<div class="col-md-4">
-                                <img src="${imageURL}" class="card-img-top">
-                                <div class="card-body" id="results-card">
-                                    <h5 class="card-title">${eventName}</h5>
-                                    <p class="card-text">${eventDate}</p>
-                                    <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
+            <img src="${imageURL}" class="card-img-top">
+            <div class="card-body" id="results-card">
+            <h5 class="card-title">${eventName}</h5>
+            <p class="card-text">${date}</p>
+            <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
                                 </div>
                             </div>`;
             $(".container-results").append(resultsDiv);
@@ -89,6 +91,7 @@ $("#searchButton").click(function () {
             // var updatedDate = moment(date)._d;
             // console.log(updatedDate);
             // console.log(time);
+
         };
     });
 
