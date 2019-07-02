@@ -141,3 +141,17 @@ a {
     color: beige;
     text-emphasis: none;
 }
+
+.sticky-footer{
+    position: absolute;
+    margin:0;
+    left:0;
+    bottom:0;
+    width: 100%;
+    border-bottom: 3px solid #FE5F55;
+    /* background-color: #7A9E9F; */
+    background:url(../images/green-dust-scratch.png);
+    border-radius: 1px;
+    border-top: 3px solid #FE5F55;
+    height:67px;
+ }
