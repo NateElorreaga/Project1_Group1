@@ -70,11 +70,12 @@ $("#searchButton").click(function (e) {
     //---------------------------------------------------------------------------------------//
 
     // Calls ajax using link put together above
+
     $.ajax(settings).then(function (responseX) {
         Window.localStorage.setItem("response",JSON.stringify(responseX))
         console.log(responseX)
         response = responseX;
-        
+
     });
     location.hash = "#/results.html";
     appendResults
