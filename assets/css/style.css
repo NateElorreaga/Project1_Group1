@@ -133,3 +133,8 @@ label {
     font-size: 30px;
 
 }
+
+a {
+    color: beige;
+    text-emphasis: none;
+}

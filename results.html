@@ -14,7 +14,9 @@
 
 <!-- Compiled and minified CSS  -->
 <!--Google Fonts CDN-->
-<link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
+    rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
@@ -28,29 +30,29 @@
 <body>
     <div class="bg-light">
 
-    <!-- Navbar start -->
-    <nav class="navbar navbar-dark">
+        <!-- Navbar start -->
+        <nav class="navbar navbar-dark">
 
-        <!-- Navbar content -->
-        <a class="navbar-brand" href="index.html">
-            <i class="fab fa-jenkins"></i>
-            EventEasy
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav text-right">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <!--Made the current page "active" (brighter than Home page)-->
-                <li class="nav-item active">
-                    <a class="nav-link" href="results.html">Concert Tickets</a>
-                </li>
+            <!-- Navbar content -->
+            <a class="navbar-brand" href="index.html">
+                <i class="fab fa-jenkins"></i>
+                EventEasy
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav text-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <!--Made the current page "active" (brighter than Home page)-->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="results.html">Concert Tickets</a>
+                    </li>
 
-                <!-- <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown link
@@ -61,23 +63,23 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li> -->
-            </ul>
-    </nav>
-    <br>
-    <br>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search for Concerts" id="search">
-        <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
+                </ul>
+        </nav>
+        <br>
+        <br>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for Concerts" id="search">
+            <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
+        </div>
+
+
+        <!-- Container Start -->
+        <div id="container-results" class="container m-auto p-5">
+
+        </div>
+        <!-- Main container end -->
     </div>
 
-
-    <!-- Container Start -->
-    <div class="container-results m-auto p-5">
-
-    </div>
-    <!-- Main container end -->
-</div>
-    
     <!-- Footer -->
     <footer id="footer" class="sticky-footer">
         <div class="container">
