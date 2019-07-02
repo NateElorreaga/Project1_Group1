@@ -29,47 +29,40 @@
 <body>
     <div class="bg-light">
 
-        <!-- Navbar start -->
-        <nav class="navbar navbar-dark">
+    <!-- Navbar start -->
+    <nav class="navbar navbar-dark">
 
-            <!-- Navbar content -->
-            <a class="navbar-brand" href="index.html">
-                <i class="fab fa-jenkins"></i>
-                EventEasy
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav text-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <!--Made the current page "active" (brighter than Home page)-->
-                    <li class="nav-item active">
-                        <a class="nav-link" href="results.html">Concert Tickets</a>
-                    </li>
-
-                    <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+        <!-- Navbar content -->
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-guitar"></i>
+            EventEasy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav text-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                      <i class="fas fa-glass-cheers"></i>  
+                        Home
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> -->
-                </ul>
-        </nav>
-        <br>
-        <br>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search for Concerts" id="search">
-            <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
-        </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="results.html">
+                        <i class="fas fa-guitar"></i>
+                        Concert Tickets
+                    </a>
+                </li>
+            </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search for Concerts" id="search">
+        <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
+    </div>
 
 
         <!-- Container Start -->

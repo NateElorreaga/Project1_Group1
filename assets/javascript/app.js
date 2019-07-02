@@ -33,8 +33,6 @@ $("#searchButton").click(function (e) {
         }
     }
 
-
-
     var userInput = {
         keyword: "&keyword=" + $("#keyword").val(),
         zipCode: "&postalCode=" + $("#zipCode").val(),
