@@ -31,6 +31,7 @@ $("#searchButton").click(function (e) {
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
             $('#errorModal').modal('toggle')
+
         }
     }
 
@@ -50,11 +51,15 @@ $("#searchButton").click(function (e) {
         //'venueName,asc', 'venueName,desc', 'random'
     }
 
+    // var resultSort = {
+    //     'name': 
+    // }
+
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     // and sets location default to sandy
     for (prop in userInput) {
         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '') { userInput[prop] = '' };
-        if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=84070"; }
+        if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=''"; }
         if (userInput.radius === "") { userInput.radius = "&radius=25&unit=miles"; }
         settings.url = settings.url + userInput[prop];
     }
