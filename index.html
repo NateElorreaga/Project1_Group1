@@ -165,14 +165,7 @@
                 <div class="card card-body">
                   <!-- inside modal -->
                   <form>
-                    <!-- input 1` 
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="search">Search Events</label>
-                      <input type="text" class="form-control" id="search">
-                    </div>
-                  </div>
-                    inputs 2 -->
+                    <!-- input row 1 -->
                     <div class="form-row">
                       <div class="form-group col-6">
                         <label for="zipCode">Zip Code</label>
@@ -183,14 +176,13 @@
                         <label for="inputgenre">Event Type</label>
                         <select id="inputgenre" class="form-control">
                           <option selected>Choose...</option>
-                          <option>Concerts</option>
+                          <option>Music</option>
                           <option>Sports</option>
-                          <option>Arts & Theater</option>
-                          <option>Family</option>
+                          <option>Arts & Theatre</option>
                         </select>
                       </div>
                     </div>
-                    <!-- input 3 -->
+                    <!-- input row 2 -->
                     <div class="form-row">
                       <div class="form-group col-2">
                         <label for="startDate">Date of Event</label>
@@ -216,7 +208,7 @@
                       <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
                     </div>
                     <div class="modal-button m-5">
-                      <button type="submit" class="btn btn-lg btn-block btn-dark" id="searchButton">Search</button>
+                        <a href="/results.html" class="btn btn-lg btn-block btn-dark" role="button" id="searchButton">Submit</a>
                     </div>
                   </form>
                 </div>
@@ -229,33 +221,6 @@
 
       </div>
       <!-- <div class="card-footer text-light text-center p-4" style="background-color: #000000;"> -->
-      <!-- Footer text -->
-
-
-      <!-- Error Modal -->
-      <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" id="errorModal"
-      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Error</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="errorText">
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
-
-      <!-- </div> -->
       <!-- Main container end -->
     </div>
   </div>
@@ -290,10 +255,10 @@
   <!--Moment.js CDN-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-    <!-- Local JS FILE -->
-    <script src="assets/javascript/app.js"></script>
-<!-- More Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <!-- Local JS FILE -->
+  <script src="assets/javascript/app.js"></script>
+  <!-- More Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
 
 </body>
 

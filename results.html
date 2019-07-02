@@ -59,10 +59,63 @@
     </nav>
     <br>
     <br>
-    <!-- <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search for Events" id="search">
-        <button class="btn btn-success" type="button" id="searchButton">Get Results</button>
-    </div> -->
+     <!-- input form -->
+     <div class="card card-body">
+        <!-- inside modal -->
+        <form>
+          <!-- input row 1 -->
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" class="form-control" id="zipCode"
+                placeholder="Enter zip code for search area">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputgenre">Event Type</label>
+              <select id="inputgenre" class="form-control">
+                <option selected>Choose...</option>
+                <option>Music</option>
+                <option>Sports</option>
+                <option>Arts & Theatre</option>
+              </select>
+            </div>
+          </div>
+          <!-- input row 2 -->
+          <div class="form-row">
+            <div class="form-group col-2">
+              <label for="startDate">Date of Event</label>
+              <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
+                max="2022-12-31">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputsort">Sort Order</label>
+              <select id="inputsort" class="form-control">
+                <option selected>Choose...</option>
+                <option>Option A</option>
+                <option>Option B</option>
+                <option>Option C</option>
+                <option>Option D</option>
+                <option>Option E</option>
+              </select>
+            </div>
+            <div class="form-group col-6">
+              <label for="keyword">Keyword Search</label>
+              <input type="text" class="form-control"
+                placeholder="Enter Keyword or leave blank for more results" id="keyword-search">
+            </div>
+            <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
+          </div>
+          <div class="modal-button m-5">
+            <button type="submit" class="btn btn-lg btn-block btn-dark" id="searchButton">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- input form -->
+</div>
+</div>
+<!-- Extra large modal end -->
 
 
         <!-- Container Start -->
