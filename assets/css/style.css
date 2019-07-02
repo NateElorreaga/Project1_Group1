@@ -2,20 +2,25 @@ body{
     /* font-family: 'Bungee Inline', cursive; */
     /* font-family: 'Pacifico', cursive; */
     background:url(../images/concrete-texture.png);
+    text-shadow: 1px 1px gray;
 }
 
 .navbar{
+    
     border-bottom: 3px solid #FE5F55;
-    background-color: #7A9E9F;
+    /* background-color: #7A9E9F; */
     border-radius: 1px;
     border-top: 3px solid #FE5F55;
     font-family: 'Pacifico', cursive;
+    background:url(../images/green-dust-scratch.png);
 }
 .navbar-brand{
     font-size: 40px;
+    text-shadow: 1px 1px gray;
 }
 .nav-link{
     font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
 }
 
 .bg-light{
@@ -57,7 +62,8 @@ label {
     bottom:0;
     width: 100%;
     border-bottom: 3px solid #FE5F55;
-    background-color: #7A9E9F;
+    /* background-color: #7A9E9F; */
+    background:url(../images/green-dust-scratch.png);
     border-radius: 1px;
     border-top: 3px solid #FE5F55;
     height:67px;
@@ -92,7 +98,6 @@ label {
     font-weight: bold;
     background-color: #FE5F55;
     border: 7px double white;
-    color:white;
 }
 #results-card{
     text-align: center;
