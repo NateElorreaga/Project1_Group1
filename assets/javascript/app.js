@@ -33,13 +33,15 @@ $("#searchButton").click(function (e) {
         }
     }
 
+
     var userInput = {
-        keyword: "&keyword=" + $("#keyword").val(),
-        zipCode: "&postalCode=" + $("#zipCode").val(),
-        radius: "&radius=" + $("#radius").val() + "&unit=miles",
-        startDate: "&startDateTime=" +$("#startDate").val(),
-        genre: "&classification=" + $("#genre").val(),
-        sort: "&sort=" + $("#sort").val(),
+        'keyword': "&keyword=" + $("#keyword").val(),
+        'zipCode': "&postalCode=" + $("#zipCode").val(),
+        'radius': "&radius=" + $("#radius").val() + "&unit=miles",
+        'startDate': '',//"&startDateTime=" +$("#startDate").val(),
+        'genre': "&classification=" + $("#genre").val(),
+        'sort': "&sort=" + $("#sort").val(),
+        propertyStringArray: ["keyword","zipCode","radius","startDate","genre","sort"],
         
         //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
@@ -47,21 +49,15 @@ $("#searchButton").click(function (e) {
         //'venueName,asc', 'venueName,desc', 'random'
     }
 
-    if($("#keyword").val()===undefined){userInput[keyword]=''};
-    if($("#zipCode").val()===undefined){userInput[zipCode]=''};
-    if($("#radius").val()===undefined){userInput[radius]=''};
-    if($("#startDate").val()===undefined){userInput[startDate]=''};
-    if($("#genre").val()===undefined){userInput[genre]=''};
-    if($("#sort").val()===undefined){userInput[sort]=''};
-
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     // and sets location default to sandy
     for (prop in userInput) {
-        console.log(userInput[prop])
-        if (userInput[prop].includes('undefined') || userInput[prop].includes('null')) { userInput[prop] = "" }
+        
+        if($("#"+prop).val()===undefined || $("#"+prop).val()===''){userInput[prop]=''};
         if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=84070"; }
         if (userInput.radius === "") { userInput.radius = "&radius=25&unit=miles"; }
         settings.url = settings.url + userInput[prop];
+        console.log(userInput[prop])
     }
 
 
@@ -72,7 +68,7 @@ $("#searchButton").click(function (e) {
     // Calls ajax using link put together above
 
     $.ajax(settings).then(function (responseX) {
-        Window.localStorage.setItem("response",JSON.stringify(responseX))
+        window.localStorage.setItem("response",JSON.stringify(responseX))
         console.log(responseX)
         response = responseX;
 
