@@ -1,20 +1,21 @@
 
+
 // Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyAWhGiAZ7wZVq3md9S54IfLqDVVITJpKB4",
-    authDomain: "firestore-practice1.firebaseapp.com",
-    databaseURL: "https://firestore-practice1.firebaseio.com",
-    projectId: "firestore-practice1",
-    storageBucket: "firestore-practice1.appspot.com",
-    messagingSenderId: "149291352027",
-    appId: "1:149291352027:web:5730c448c25de773"
-};
+// var firebaseConfig = {
+//     apiKey: "AIzaSyBT0wmGd7Q2IYs7EBSLOHnQXua0BFLCt3A",
+//     authDomain: "project1-80e54.firebaseapp.com",
+//     databaseURL: "https://project1-80e54.firebaseio.com",
+//     projectId: "project1-80e54",
+//     storageBucket: "project1-80e54.appspot.com",
+//     messagingSenderId: "799217159264",
+//     appId: "1:799217159264:web:eb1bc8b9a3b3825a"
+// };
 
 
-//Initialize Firebase
+// //Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 
-// var database = firebase.firestore();
+// var database = firebase.database();
 
 var local = window.localStorage;
 var resultsDiv
@@ -24,7 +25,7 @@ $("#searchButton").click(function (e) {
     //-----------------------------------------------------------------------//
     e.preventDefault()
     //initializes ajax settings
-    var settings = {
+    settings = {
         url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
         "method": "GET",
         "error": function (response) {
@@ -38,11 +39,11 @@ $("#searchButton").click(function (e) {
         'keyword': "&keyword=" + $("#keyword").val(),
         'zipCode': "&postalCode=" + $("#zipCode").val(),
         'radius': "&radius=" + $("#radius").val() + "&unit=miles",
-        'startDate': '',//"&startDateTime=" +$("#startDate").val(),
+        'startDate': "&startDate=" + $("#startDate").val(),
         'genre': "&classification=" + $("#genre").val(),
         'sort': "&sort=" + $("#sort").val(),
-        propertyStringArray: ["keyword","zipCode","radius","startDate","genre","sort"],
-        
+        propertyStringArray: ["keyword", "zipCode", "radius", "startDate", "genre", "sort"],
+
         //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
         //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
@@ -52,37 +53,46 @@ $("#searchButton").click(function (e) {
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     // and sets location default to sandy
     for (prop in userInput) {
-        
-        if($("#"+prop).val()===undefined || $("#"+prop).val()===''){userInput[prop]=''};
+        if ($("#" + prop).val() === undefined || $("#" + prop).val() === '') { userInput[prop] = '' };
         if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=84070"; }
         if (userInput.radius === "") { userInput.radius = "&radius=25&unit=miles"; }
         settings.url = settings.url + userInput[prop];
-        console.log(userInput[prop])
     }
+
+    console.log(settings.url)
+
+    // Add a new document in collection "cities"
+    // database.collection("ticketmasterURL").doc("kmmH4qfXjCqxZ59xlq1u").set(settings)
+    //     .then(function () {
+    //         console.log("Document successfully written!");
+    //     })
+    //     .catch(function (error) {
+    //         console.error("Error writing document: ", error);
+    //     });
 
 
     // double checks url before sent to api for response
-    console.log(settings.url)
+    
     //---------------------------------------------------------------------------------------//
 
     // Calls ajax using link put together above
 
-    $.ajax(settings).then(function (responseX) {
-        window.localStorage.setItem("response",JSON.stringify(responseX))
-        console.log(responseX)
-        response = responseX;
 
-    });
     location.hash = "#/results.html";
-    appendResults
+    appendResults()
 })
 
 //----JQ fx so that the results page appends results--//
-var appendResults = function(){
+var appendResults = function () {
+
+    $.ajax(settings).then(function (responseX) {
+        console.log(responseX)
+        response = responseX;
+    });
 
     $(".container-results").empty();
     response = JSON.parse(local.getItem("response"))
-    
+
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
     for (var i = 0; i < response._embedded.events.length; i++) {
         var eventName = response._embedded.events[i].name;
