@@ -95,13 +95,17 @@ var getResponse = function() {
 }
 
 var appendResults = function(response) {
+
     console.log(response)
+
     $(".container-results").empty();
 
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
-    var resultCounter = 1;
+    // var resultCounter = 1;
+    // var eventRow;
     for (var i = 0; i < response._embedded.events.length; i++) {
-        var newRowReady = 3;
+    
+        // var newRowReady = 3;
         var eventName = response._embedded.events[i].name;
         var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
         var imageURL = (response._embedded.events[i].images[9].url);
@@ -120,23 +124,24 @@ var appendResults = function(response) {
                             </div>
                         </div>`;
         
-
+        $("#container-results").append(resultDiv);
         
-        if (resultCounter % newRowReady !== 0) {
-            $(eventRow).append(resultDiv);
-        } else {
-            $("#container-results").append(eventRow);
-            debugger
-            var eventRow = $("<div>");
-            resultCounter = 1;
-            $(eventRow).attr("class","row");
-        };
+        // if (resultCounter % newRowReady === 0) {
+        //     resultCounter = 1;
+        //     $("#container-results").append(resultDiv);
+        //     var eventRow = $("<div>");
+        //     $(eventRow).attr("class","row");
+        //     $(eventRow).append(resultDiv);
+        //     resultCounter = resultCounter + 1
+        // } else {
+        //     $(eventRow).append(resultDiv);
+        //     resultCounter = resultCounter + 1;
+        // };
 
     };
 }
 
 $(document).ready(function(){
-    console.log("loaded")
     getResponse()
 })
 
