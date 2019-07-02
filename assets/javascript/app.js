@@ -36,7 +36,7 @@ $("#searchButton").click(function (e) {
 
 
     var userInput = {
-        keyWord: "&keyword=" + $("#keyWord").val(),
+        keyword: "&keyword=" + $("#keyword").val(),
         zipCode: "&postalCode=" + $("#zipCode").val(),
         radius: "&radius=" + $("#radius").val() + "&unit=miles",
         startDate: "&startDateTime=" +$("#startDate").val(),
@@ -49,9 +49,9 @@ $("#searchButton").click(function (e) {
         //'venueName,asc', 'venueName,desc', 'random'
     }
 
-    if($("#search").val()===undefined){userInput[keyWord]=''};
+    if($("#keyword").val()===undefined){userInput[keyword]=''};
     if($("#zipCode").val()===undefined){userInput[zipCode]=''};
-    if($("#distance").val()===undefined){userInput[radius]=''};
+    if($("#radius").val()===undefined){userInput[radius]=''};
     if($("#startDate").val()===undefined){userInput[startDate]=''};
     if($("#genre").val()===undefined){userInput[genre]=''};
     if($("#sort").val()===undefined){userInput[sort]=''};
