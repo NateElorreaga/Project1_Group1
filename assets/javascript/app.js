@@ -38,7 +38,7 @@ $("#searchButton").click(function (e) {
         'keyword': "&keyword=" + $("#keyword").val(),
         'zipCode': "&postalCode=" + $("#zipCode").val(),
         'radius': "&radius=" + $("#radius").val() + "&unit=miles",
-        'startDate': '',//"&startDateTime=" +$("#startDate").val(),
+        'startDate': "&startDate=" +$("#startDate").val(),
         'genre': "&classification=" + $("#genre").val(),
         'sort': "&sort=" + $("#sort").val(),
         propertyStringArray: ["keyword","zipCode","radius","startDate","genre","sort"],
