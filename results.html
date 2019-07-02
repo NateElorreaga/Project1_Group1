@@ -8,14 +8,15 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
+<script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
 
 <!-- Compiled and minified CSS  -->
 <!--Google Fonts CDN-->
 <link
-    href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
-    rel="stylesheet">
+  href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
+  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
 
 <!-- firebase cdn -->
@@ -29,136 +30,147 @@
 </head>
 
 <body>
-    <div class="bg-light">
+  <div class="bg-light">
 
     <!-- Navbar start -->
     <nav class="navbar navbar-dark">
 
-        <!-- Navbar content -->
-        <a class="navbar-brand" href="index.html">
-            <i class="fas fa-guitar"></i>
-            EventEasy
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav text-right">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                      <i class="fas fa-glass-cheers"></i>  
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="results.html">
-                        <i class="fas fa-guitar"></i>
-                        Tickets
-                    </a>
-                </li>
-            </ul>
+      <!-- Navbar content -->
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-guitar"></i>
+        EventEasy
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav text-right">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-glass-cheers"></i>
+              Home
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="results.html">
+              <i class="fas fa-guitar"></i>
+              Tickets
+            </a>
+          </li>
+        </ul>
     </nav>
     <br>
     <br>
-     <!-- input form -->
-     <div class="card card-body">
-        <!-- inside modal -->
-        <form>
-          <!-- input row 1 -->
-          <div class="form-row">
-            <div class="form-group col-6">
-              <label for="zipCode">Zip Code</label>
-              <input type="text" class="form-control" id="zipCode"
-                placeholder="Enter zip code for search area">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputgenre">Event Type</label>
-              <select id="inputgenre" class="form-control">
-                <option selected>Choose...</option>
-                <option>Music</option>
-                <option>Sports</option>
-                <option>Arts & Theatre</option>
-              </select>
-            </div>
+
+    
+    <!-- Extra large modal -->
+    <button id="searchButtonHomePage" type="button" class="btn btn-success btn-md btn-block w-75 mx-auto"
+      data-toggle="modal" data-target=".bd-example-modal-xl">Search Events</button>
+
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <!-- input form -->
+          <div class="card card-body">
+            <!-- inside modal -->
+            <form>
+              <!-- input row 1 -->
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <label for="zipCode">Zip Code</label>
+                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputgenre">Event Type</label>
+                  <select id="inputgenre" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>Music</option>
+                    <option>Sports</option>
+                    <option>Arts & Theatre</option>
+                  </select>
+                </div>
+              </div>
+              <!-- input row 2 -->
+              <div class="form-row">
+                <div class="form-group col-2">
+                  <label for="startDate">Date of Event</label>
+                  <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
+                    max="2022-12-31">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputsort">Sort Order</label>
+                  <select id="inputsort" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>Option A</option>
+                    <option>Option B</option>
+                    <option>Option C</option>
+                    <option>Option D</option>
+                    <option>Option E</option>
+                  </select>
+                </div>
+                <div class="form-group col-6">
+                  <label for="keyword">Keyword Search</label>
+                  <input type="text" class="form-control" placeholder="Enter Keyword or leave blank for more results"
+                    id="keyword-search">
+                </div>
+                <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
+              </div>
+              <div class="modal-button m-5">
+                <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" id="searchButton">Submit</a>
+              </div>
+            </form>
           </div>
-          <!-- input row 2 -->
-          <div class="form-row">
-            <div class="form-group col-2">
-              <label for="startDate">Date of Event</label>
-              <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
-                max="2022-12-31">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputsort">Sort Order</label>
-              <select id="inputsort" class="form-control">
-                <option selected>Choose...</option>
-                <option>Option A</option>
-                <option>Option B</option>
-                <option>Option C</option>
-                <option>Option D</option>
-                <option>Option E</option>
-              </select>
-            </div>
-            <div class="form-group col-6">
-              <label for="keyword">Keyword Search</label>
-              <input type="text" class="form-control"
-                placeholder="Enter Keyword or leave blank for more results" id="keyword-search">
-            </div>
-            <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
-          </div>
-          <div class="modal-button m-5">
-            <button type="submit" class="btn btn-lg btn-block btn-dark" id="searchButton">Search</button>
-          </div>
-        </form>
+        </div>
       </div>
+      <!-- input form -->
     </div>
+    <!-- Extra large modal end -->
   </div>
-  <!-- input form -->
-</div>
-</div>
-<!-- Extra large modal end -->
+  
 
 
-        <!-- Container Start -->
-        <div id="container-results" class="container m-auto p-5">
+  <!-- Container Start -->
+  <div id="container-results" class="container card py-4 my-4">
 
-        </div>
-        <!-- Main container end -->
+  </div>
+  <!-- Main container end -->
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer" class="sticky-footer">
+    <div class="container">
     </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer id="footer" class="sticky-footer">
-        <div class="container">
-        </div>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
 
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-    <!-- Compiled and minified JavaScript for maaterialize -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+  <!-- Compiled and minified JavaScript for maaterialize -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
-    <!--Firebase CDN-->
+  <!--Firebase CDN-->
   <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
 
-    <!--Moment.js CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+  <!--Moment.js CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
-    <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/app.js"></script>
 
 </body>
 

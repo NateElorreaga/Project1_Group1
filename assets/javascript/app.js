@@ -17,15 +17,12 @@ var firebaseConfig = {
 
 var firestore = firebase.firestore();
 
-var local = window.localStorage;
-var resultsDiv
-var response;
-var settings;
-$("#searchButton").click(function() {
+var resultsDiv;
 
+$("#searchButton").click(function() {
     //-----------------------------------------------------------------------//
     //initializes ajax settings
-    settings = {
+    var settings = {
         "url": "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
         "method": "GET",
         "error": function (response) {
@@ -44,56 +41,50 @@ $("#searchButton").click(function() {
         'sort': "&sort=" + $("#sort").val(),
         propertyStringArray: ["keyword", "zipCode", "radius", "startDate", "genre", "sort"],
 
-        //Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-        //'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-        //'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-        //'venueName,asc', 'venueName,desc', 'random'
+        // Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+        // 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
+        // 'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
+        // 'venueName,asc', 'venueName,desc', 'random'
     }
-
-    // var resultSort = {
-    //     'name': 
-    // }
 
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     // and sets location default to sandy
     for (prop in userInput) {
         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '') { userInput[prop] = '' };
-        if (userInput.zipCode === "") { userInput.zipCode = "&postalCode=''"; }
-        if (userInput.radius === "") { userInput.radius = "&radius=25&unit=miles"; }
+        if (userInput.zipCode ==="") { userInput.zipCode = "&postalCode=84070"; }
+        if (userInput.radius ==="") { userInput.radius = "&radius=25&unit=miles"; }
         settings.url = settings.url + userInput[prop];
     }
 
-    console.log(settings.url)
+    console.log(settings)
 
     // Add a new document in collection "cities"
-    firestore.collection("ticketmasterURL").doc("settings").set({obj: JSON.stringify(settings)})
+    firestore.collection("ticketmasterURL").doc("settings").set({obj: JSON.stringify(settings)},{merge: true})
         .then(function () {
             console.log("Document successfully written!");
+            debugger
         })
         .catch(function (error) {
             console.error("Error writing document: ", error);
-        });
-
-
-    // double checks url before sent to api for response
-    
+        });  
     //---------------------------------------------------------------------------------------//
-
-    // Calls ajax using link put together above
-
-
-    location.hash = "#/results.html";
-    appendResults()
 })
 
-//----JQ fx so that the results page appends results--//
-var appendResults = function () {
-
+var getResponse = function() {
     firestore.collection("ticketmasterURL").doc("settings").get()
     .then(function(doc) {
         if (doc.exists) {
-             settings = JSON.parse(doc.data()["obj"])
-             console.log(settings)
+            //----------------GETTING SETTINGS FROM FIRESTORE-----------//
+
+             let settings = JSON.parse(doc.data()["obj"])
+            console.log(settings.url)
+             //---------AJAX CALL USING FIREBASE SAVED SETTINGS-------//
+
+             $.ajax(settings).then(function (response) {
+                // (responseX) is this entire html
+                appendResults(response)
+            });
+
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -101,18 +92,16 @@ var appendResults = function () {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
-    
+}
 
-    $.ajax(settings).then(function (responseX) {
-        console.log(responseX)
-        response = responseX;
-    });
-
+var appendResults = function(response) {
+    console.log(response)
     $(".container-results").empty();
-    response = JSON.parse(local.getItem("response"))
 
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
+    var resultCounter = 1;
     for (var i = 0; i < response._embedded.events.length; i++) {
+        var newRowReady = 3;
         var eventName = response._embedded.events[i].name;
         var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
         var imageURL = (response._embedded.events[i].images[9].url);
@@ -122,7 +111,7 @@ var appendResults = function () {
         var date = moment(eventDate).format('MMMM Do YYYY, h:mm a');
 
         //made this var global so we can use it on any html
-        resultsDiv = `<div class="col-md-4">
+        resultDiv = `<div class="col-md-4 float-left">
         <img src="${imageURL}" class="card-img-top">
         <div class="card-body" id="results-card">
         <h5 class="card-title">${eventName}</h5>
@@ -130,18 +119,26 @@ var appendResults = function () {
         <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
                             </div>
                         </div>`;
-        $(".container-results").append(resultsDiv);
+        
 
-        //TRYING TO CONVERT DATES AND TIMES
-        // var date = response._embedded.events[i].dates.start.localDate;
-        // var time = response._embedded.events[i].dates.start.localTime;
-
-        // var updatedDate = moment(date)._d;
-        // console.log(updatedDate);
-        // console.log(time);
+        
+        if (resultCounter % newRowReady !== 0) {
+            $(eventRow).append(resultDiv);
+        } else {
+            $("#container-results").append(eventRow);
+            debugger
+            var eventRow = $("<div>");
+            resultCounter = 1;
+            $(eventRow).attr("class","row");
+        };
 
     };
 }
+
+$(document).ready(function(){
+    console.log("loaded")
+    getResponse()
+})
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')

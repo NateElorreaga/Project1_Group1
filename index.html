@@ -9,8 +9,8 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
-  <script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
+<link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
+<script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
 
 <!-- firebase cdn -->
 <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
@@ -192,11 +192,15 @@
                         <label for="inputsort">Sort Order</label>
                         <select id="inputsort" class="form-control">
                           <option selected>Choose...</option>
-                          <option>Option A</option>
-                          <option>Option B</option>
-                          <option>Option C</option>
-                          <option>Option D</option>
+                          <option value="name,asc">Name</option>
+                          <option value="'date,asc'">Date</option>
+                          <option value="distance,asc">Distance</option>
+                          <option value="random">Random</option>
                           <option>Option E</option>
+                          <!-- Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
+                          'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
+                          'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
+                          'venueName,asc', 'venueName,desc', 'random' -->
                         </select>
                       </div>
                       <div class="form-group col-6">
@@ -207,7 +211,8 @@
                       <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
                     </div>
                     <div class="modal-button m-5">
-                        <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" id="searchButton">Submit</a>
+                      <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button"
+                        id="searchButton">Submit</a>
                     </div>
                   </form>
                 </div>
@@ -255,9 +260,9 @@
   <!--Moment.js CDN-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-    <!-- Local JS FILE -->
-    <script src="assets/javascript/app.js"></script>
-   
+  <!-- Local JS FILE -->
+  <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
