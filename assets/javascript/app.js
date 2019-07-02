@@ -21,10 +21,9 @@ var local = window.localStorage;
 var resultsDiv
 var response;
 var settings;
-$("#searchButton").click(function(e) {
+$("#searchButton").click(function() {
 
     //-----------------------------------------------------------------------//
-    e.preventDefault()
     //initializes ajax settings
     settings = {
         "url": "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
