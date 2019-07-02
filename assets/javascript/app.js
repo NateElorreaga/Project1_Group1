@@ -2,36 +2,37 @@
 
 
 // Your web app’s Firebase configuration
- var firebaseConfig = {
-   apiKey: "AIzaSyAML9mVgPvmI9AFjHTWN4GjxxEpnBDZlqo",
-   authDomain: "eventeasy-8c748.firebaseapp.com",
-   databaseURL: "https://eventeasy-8c748.firebaseio.com",
-   projectId: "eventeasy-8c748",
-   storageBucket: "",
-   messagingSenderId: "704944390338",
-   appId: "1:704944390338:web:ea8864bd0ac7fc4b"
- };
+var firebaseConfig = {
+    apiKey: "AIzaSyAML9mVgPvmI9AFjHTWN4GjxxEpnBDZlqo",
+    authDomain: "eventeasy-8c748.firebaseapp.com",
+    databaseURL: "https://eventeasy-8c748.firebaseio.com",
+    projectId: "eventeasy-8c748",
+    storageBucket: "eventeasy-8c748.appspot.com",
+    messagingSenderId: "704944390338",
+    appId: "1:704944390338:web:ea8864bd0ac7fc4b"
+  };
 // Initialize Firebase
  firebase.initializeApp(firebaseConfig);
 
 
-var database = firebase.database();
+var firestore = firebase.firestore();
 
 var local = window.localStorage;
 var resultsDiv
 var response;
+var settings;
 $("#searchButton").click(function(e) {
 
     //-----------------------------------------------------------------------//
     e.preventDefault()
     //initializes ajax settings
     settings = {
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+        "url": "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
         "method": "GET",
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
             $('#errorModal').modal('toggle')
-        }
+        },
     }
 
 
@@ -62,7 +63,7 @@ $("#searchButton").click(function(e) {
     console.log(settings.url)
 
     // Add a new document in collection "cities"
-    database.collection("ticketmasterURL").doc("kmmH4qfXjCqxZ59xlq1u").set(settings)
+    firestore.collection("ticketmasterURL").doc("settings").set({obj: JSON.stringify(settings)})
         .then(function () {
             console.log("Document successfully written!");
         })
@@ -84,6 +85,20 @@ $("#searchButton").click(function(e) {
 
 //----JQ fx so that the results page appends results--//
 var appendResults = function () {
+
+    firestore.collection("ticketmasterURL").doc("settings").get()
+    .then(function(doc) {
+        if (doc.exists) {
+             settings = JSON.parse(doc.data()["obj"])
+             console.log(settings)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    
 
     $.ajax(settings).then(function (responseX) {
         console.log(responseX)
