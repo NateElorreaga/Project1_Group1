@@ -1,26 +1,26 @@
 
 
-// Your web app's Firebase configuration
-// var firebaseConfig = {
-//     apiKey: "AIzaSyBT0wmGd7Q2IYs7EBSLOHnQXua0BFLCt3A",
-//     authDomain: "project1-80e54.firebaseapp.com",
-//     databaseURL: "https://project1-80e54.firebaseio.com",
-//     projectId: "project1-80e54",
-//     storageBucket: "project1-80e54.appspot.com",
-//     messagingSenderId: "799217159264",
-//     appId: "1:799217159264:web:eb1bc8b9a3b3825a"
-// };
+
+// Your web app’s Firebase configuration
+ var firebaseConfig = {
+   apiKey: "AIzaSyAML9mVgPvmI9AFjHTWN4GjxxEpnBDZlqo",
+   authDomain: "eventeasy-8c748.firebaseapp.com",
+   databaseURL: "https://eventeasy-8c748.firebaseio.com",
+   projectId: "eventeasy-8c748",
+   storageBucket: "",
+   messagingSenderId: "704944390338",
+   appId: "1:704944390338:web:ea8864bd0ac7fc4b"
+ };
+// Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
 
 
-// //Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-
-// var database = firebase.database();
+var database = firebase.database();
 
 var local = window.localStorage;
 var resultsDiv
 var response;
-$("#searchButton").click(function (e) {
+$("#searchButton").click(function(e) {
 
     //-----------------------------------------------------------------------//
     e.preventDefault()
@@ -62,13 +62,13 @@ $("#searchButton").click(function (e) {
     console.log(settings.url)
 
     // Add a new document in collection "cities"
-    // database.collection("ticketmasterURL").doc("kmmH4qfXjCqxZ59xlq1u").set(settings)
-    //     .then(function () {
-    //         console.log("Document successfully written!");
-    //     })
-    //     .catch(function (error) {
-    //         console.error("Error writing document: ", error);
-    //     });
+    database.collection("ticketmasterURL").doc("kmmH4qfXjCqxZ59xlq1u").set(settings)
+        .then(function () {
+            console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
 
 
     // double checks url before sent to api for response
