@@ -98,7 +98,7 @@ var appendResults = function(response) {
 
     console.log(response)
 
-    $(".container-results").empty();
+    $(".card-group").empty();
 
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
     // var resultCounter = 1;
@@ -115,16 +115,16 @@ var appendResults = function(response) {
         var date = moment(eventDate).format('MMMM Do YYYY, h:mm a');
 
         //made this var global so we can use it on any html
-        resultDiv = `<div class="col-md-4 float-left">
+        resultDiv = `<div class="col-md-4 m-auto p-4">
         <img src="${imageURL}" class="card-img-top">
-        <div class="card-body" id="results-card">
+        <div class="card-body bg-white" id="results-card">
         <h5 class="card-title">${eventName}</h5>
         <p class="card-text">${date}</p>
         <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
                             </div>
                         </div>`;
         
-        $("#container-results").append(resultDiv);
+        $(".card-group").append(resultDiv);
         
         // if (resultCounter % newRowReady === 0) {
         //     resultCounter = 1;
