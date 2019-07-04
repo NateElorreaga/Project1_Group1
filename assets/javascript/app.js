@@ -2,7 +2,7 @@
 
 
 // Your web app’s Firebase configuration
-const firebaseConfig = {
+var firebaseConfig = {
     apiKey: "AIzaSyAML9mVgPvmI9AFjHTWN4GjxxEpnBDZlqo",
     authDomain: "eventeasy-8c748.firebaseapp.com",
     databaseURL: "https://eventeasy-8c748.firebaseio.com",
@@ -10,63 +10,36 @@ const firebaseConfig = {
     storageBucket: "eventeasy-8c748.appspot.com",
     messagingSenderId: "704944390338",
     appId: "1:704944390338:web:ea8864bd0ac7fc4b"
-};
+  };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+ firebase.initializeApp(firebaseConfig);
 
-var database = firebase.database()
+
 var firestore = firebase.firestore();
 
 var resultsDiv;
-var settings;
 
-var urlCreator = function (userInput, settingsLocal) {
-    for (prop in userInput) {
-        if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
-        settingsLocal.url = settingsLocal.url + userInput[prop];
-        return userInput
-    };
-};
-
-var locationConversion = function (userInput) {
-    $.ajax({
-        type: "GET",
-        url: "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + $("#zipCode").val() + "&key=AIzaSyA83a9a87aUgnoMO1tcqThKpamG5UynLEI",
-        success: function (response) {
-            userInput['latlong'] = response.results[0].geometry.location;
-            userInput['latlong'] = userInput['latlong']['lat'].toString() + "," + userInput['latlong']['lng'].toString();
-            userInput['latlong'] = "&latlong=" + userInput['latlong'];
-            console.log(userInput['latlong']);
-            return userInput;
-        },
-    })
-};
-
-$("#searchButton").click(function (e) {
-    e.preventDefault();
+$("#searchButton").click(function() {
     //-----------------------------------------------------------------------//
     //initializes ajax settings
-    var settingsLocal = {
-        // "url": "https://app.ticketmaster.com/discovery/v2/"+$("#type").val()+".json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+    var settings = {
         "url": "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
         "method": "GET",
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
             $('#errorModal').modal('toggle')
         },
-        "type": "events" //$("#type").val()
     }
 
 
     var userInput = {
         'keyword': "&keyword=" + $("#keyword").val(),
-        'latlong': '',
-        'zipCode': "&postalCode="+$("#zipCode").val(),
+        'zipCode': "&postalCode=" + $("#zipCode").val(),
+        'radius': "&radius=" + $("#radius").val() + "&unit=miles",
         'startDate': "&startDate=" + $("#startDate").val(),
-        'genre': "&classificationName=" + $("#genre").val(),
-        'radius': "&radius=50&unit=miles",
+        'genre': "&classification=" + $("#genre").val(),
         'sort': "&sort=" + $("#sort").val(),
-        propertyStringArray: ["keyword", "zipCode", "type", "startDate", "genre", "sort"],
+        propertyStringArray: ["keyword", "zipCode", "radius", "startDate", "genre", "sort"],
 
         // Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         // 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
@@ -74,92 +47,72 @@ $("#searchButton").click(function (e) {
         // 'venueName,asc', 'venueName,desc', 'random'
     }
 
-
-
-    for (prop in userInput) {
-        if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
-        if($("#zipCode").val() === ''){userInput['zipCode']="&postalCode=84070"}
-        settingsLocal['url'] = settingsLocal['url'] + userInput[prop];
-    };
-
-    // if ($("#zipCode").val() !== "") {
-    //     settingsLocal = urlCreator(locationConversion(userInput), settingsLocal);
-
-    // } else {
-    //     settingsLocal = urlCreator(userInput, settingsLocal);
-    // }
-
-
-    // userInput['geo'] =
     // for looping over userInputs to make sure empty properties dont break the link with undefined
     // and sets location default to sandy
+    for (prop in userInput) {
+        if ($("#" + prop).val() === undefined || $("#" + prop).val() === '') { userInput[prop] = '' };
+        if (userInput.zipCode ==="") { userInput.zipCode = "&postalCode=84070"; }
+        if (userInput.radius ==="") { userInput.radius = "&radius=25&unit=miles"; }
+        settings.url = settings.url + userInput[prop];
+    }
 
+    console.log(settings)
 
-    settings = { 'obj': JSON.stringify(settingsLocal) };
-
-    console.log(settingsLocal)
-    //-----------------------------------------------------------------------------//
-
-    firestore.collection("ticketmasterURL").doc("settings").set(settings)
+    // Add a new document in collection "cities"
+    firestore.collection("ticketmasterURL").doc("settings").set({obj: JSON.stringify(settings)},{merge: true})
         .then(function () {
             console.log("Document successfully written!");
-            var location = window.location.toString();
-            if (!location.includes(($("#searchButton").attr("href")))) {
-                window.location = $("#searchButton").attr("href");
-            }
-            else {
-                getResponse()
-            }
-
+            debugger
         })
         .catch(function (error) {
             console.error("Error writing document: ", error);
-        })
-});
+        });  
+    //---------------------------------------------------------------------------------------//
+})
 
-//-------------------------------------------------------------------------------//
-
-var getResponse = function () {
-
+var getResponse = function() {
     firestore.collection("ticketmasterURL").doc("settings").get()
-        .then(function (doc) {
-            if (doc.exists) {
-                //----------------GETTING SETTINGS FROM FIRESTORE-----------//
+    .then(function(doc) {
+        if (doc.exists) {
+            //----------------GETTING SETTINGS FROM FIRESTORE-----------//
 
-                let settings = JSON.parse(doc.data()["obj"])
-                //---------AJAX CALL USING FIREBASE SAVED SETTINGS-------//
+             let settings = JSON.parse(doc.data()["obj"])
+            console.log(settings.url)
+             //---------AJAX CALL USING FIREBASE SAVED SETTINGS-------//
 
-                $.ajax(settings).then(function (response) {
-                    // (responseX) is this entire html
-                    appendResults(response, settings["type"])
-                });
+             $.ajax(settings).then(function (response) {
+                // (responseX) is this entire html
+                appendResults(response)
+            });
 
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-        }).catch(function (error) {
-            console.log("Error getting document:", error);
-        });
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 }
-//);
 
-var appendResults = function (response, type) {
+var appendResults = function(response) {
+
+    console.log(response)
 
     $(".card-group").empty();
-    let responseResults = response._embedded[type]
-
 
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
-    for (var i = 0; i < responseResults.length; i++) {
-        // var newRowReady = 3;
-        var eventName = responseResults[i].name;
-        var eventDate = responseResults[i].dates.start.localDate + " " + responseResults[i].dates.start.localTime;
-        var imageURL = (responseResults[i].images[9].url);
-        //links to the URL to purchase tickets 
-        var linkURL = (responseResults[i].url);
+    // var resultCounter = 1;
+    // var eventRow;
+    for (var i = 0; i < response._embedded.events.length; i++) {
     
-        var date = moment(eventDate).format('MMMM Do YYYY, hh:mm a');
+        // var newRowReady = 3;
+        var eventName = response._embedded.events[i].name;
+        var eventDate = response._embedded.events[i].dates.start.localDate + " " + response._embedded.events[i].dates.start.localTime;
+        var imageURL = (response._embedded.events[i].images[9].url);
+        //links to the URL to purchase tickets 
+        var linkURL = (response._embedded.events[i].url);
+
+        var date = moment(eventDate).format('MMMM Do YYYY, h:mm a');
 
         //made this var global so we can use it on any html
         resultDiv = `<div class="col-md-4 m-auto p-4">
@@ -170,13 +123,25 @@ var appendResults = function (response, type) {
         <a href="${linkURL}" class="btn btn-primary" id="buy-tickets">Buy Tickets</a>
                             </div>
                         </div>`;
-
+        
         $(".card-group").append(resultDiv);
+        
+        // if (resultCounter % newRowReady === 0) {
+        //     resultCounter = 1;
+        //     $("#container-results").append(resultDiv);
+        //     var eventRow = $("<div>");
+        //     $(eventRow).attr("class","row");
+        //     $(eventRow).append(resultDiv);
+        //     resultCounter = resultCounter + 1
+        // } else {
+        //     $(eventRow).append(resultDiv);
+        //     resultCounter = resultCounter + 1;
+        // };
 
     };
 }
 
-$(document).ready(function () {
+$(document).ready(function(){
     getResponse()
 })
 
