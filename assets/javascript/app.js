@@ -159,7 +159,7 @@ var appendResults = function (response, type) {
         //links to the URL to purchase tickets 
         var linkURL = (responseResults[i].url);
     
-        var date = moment(eventDate).format('MM-DD-YYYY hh:mm a');
+        var date = moment(eventDate).format('MMMM Do YYYY, hh:mm a');
 
         //made this var global so we can use it on any html
         resultDiv = `<div class="col-md-4 m-auto p-4">
