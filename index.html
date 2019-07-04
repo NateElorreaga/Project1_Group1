@@ -47,6 +47,18 @@
           <li class="nav-item active">
             <a class="nav-link" href="results.html">Tickets</a>
           </li>
+
+          <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li> -->
         </ul>
     </nav>
 
@@ -154,19 +166,28 @@
                   <form>
                     <!-- input row 1 -->
                     <div class="form-row">
+                      <!-- <div class="form-group col-md-6">
+                        <label for="type">Search Type</label>
+                        <select id="type" class="form-control">
+                          <option selected value="events">Events</option>
+                          <option value="attractions">Attractions</option>
+                        </select>
+                      </div> -->
                       <div class="form-group col-6">
                         <label for="zipCode">Zip Code</label>
-                        <input type="text" class="form-control" id="zipCode"
-                          placeholder="Enter zip code for search area">
+                        <input type="text" class="form-control" id="zipCode" placeholder="Enter zip code">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="inputgenre">Event Type</label>
-                        <select id="inputgenre" class="form-control">
+                        <label for="inputgenre">Catagories</label>
+                        <input type="text" class="form-control"
+                        placeholder="Leave blank for more results" id="genre">
+
+                        <!-- <select id="genre" class="form-control">
                           <option selected>Choose...</option>
                           <option>Music</option>
                           <option>Sports</option>
                           <option>Arts & Theatre</option>
-                        </select>
+                        </select> -->
                       </div>
                     </div>
                     <!-- input row 2 -->
@@ -176,15 +197,16 @@
                         <input type="text" class="form-control" placeholder="Enter Keyword or leave blank for more results"
                           id="keyword-search">
                       </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputsort">Sort Order</label>
-                        <select id="inputsort" class="form-control">
+
+                      <div class="form-group col-md-4">
+                        <label for="sort">Sort Order</label>
+                        <select id="sort" class="form-control">
+
                           <option selected>Choose...</option>
                           <option value="name,asc">Name</option>
-                          <option value="'date,asc'">Date</option>
+                          <option value="date,asc">Date</option>
                           <option value="distance,asc">Distance</option>
                           <option value="random">Random</option>
-                          <option>Option E</option>
                           <!-- Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
                           'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
                           'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
@@ -192,6 +214,11 @@
                         </select>
                         </div>
                       </div>
+
+                      <div class="form-group col-6">
+                        <label for="keyword">Keyword Search</label>
+                        <input type="text" class="form-control"
+                          placeholder="Leave blank for more results" id="keyword">
                       <div class="form-row">
                         <div class="form-group col-6">
                           <label for="startDate">Date of Event</label>
@@ -201,8 +228,8 @@
                       <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
                     </div>
                     <div class="modal-button m-5">
-                      <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button"
-                        id="searchButton">Submit</a>
+                      <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" data-toggle="modal"
+                        data-target=".bd-example-modal-xl" id="searchButton">Submit</a>
                     </div>
                   </form>
                 </div>
@@ -221,6 +248,7 @@
   <br>
   <br>
   <br>
+
   <!-- Footer -->
   <footer id="footer" class="sticky-footer">
     <div class="container">
