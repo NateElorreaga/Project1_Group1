@@ -20,32 +20,31 @@ var firestore = firebase.firestore();
 var resultsDiv;
 var settings;
 
-var urlCreator = function (userInput, settingsLocal) {
-    for (prop in userInput) {
-        if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
-        settingsLocal.url = settingsLocal.url + userInput[prop];
-        return userInput
-    };
-};
+// var urlCreator = function (userInput, settingsLocal) {
+//     for (prop in userInput) {
+//         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
+//         settingsLocal.url = settingsLocal.url + userInput[prop];
+//         return userInput
+//     };
+// };
 
-var locationConversion = function (userInput) {
-    $.ajax({
-        type: "GET",
-        url: "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + $("#zipCode").val() + "&key=AIzaSyA83a9a87aUgnoMO1tcqThKpamG5UynLEI",
-        success: function (response) {
-            userInput['latlong'] = response.results[0].geometry.location;
-            userInput['latlong'] = userInput['latlong']['lat'].toString() + "," + userInput['latlong']['lng'].toString();
-            userInput['latlong'] = "&latlong=" + userInput['latlong'];
-            console.log(userInput['latlong']);
-            return userInput;
-        },
-    })
-};
+// var locationConversion = function (userInput) {
+//     $.ajax({
+//         type: "GET",
+//         url: "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + $("#zipCode").val(),
+//         success: function (response) {
+//             userInput['latlong'] = response.results[0].geometry.location;
+//             userInput['latlong'] = userInput['latlong']['lat'].toString() + "," + userInput['latlong']['lng'].toString();
+//             userInput['latlong'] = "&latlong=" + userInput['latlong'];
+//             console.log(userInput['latlong']);
+//             return userInput;
+//         },
+//     })
+// };
 
 $("#searchButton").click(function (e) {
     e.preventDefault();
 
-    //-----------------------------------------------------------------------//
     //initializes ajax settings
     var settingsLocal = {
         // "url": "https://app.ticketmaster.com/discovery/v2/"+$("#type").val()+".json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
@@ -58,7 +57,6 @@ $("#searchButton").click(function (e) {
         "type": "events" //$("#type").val()
     }
 
-
     var userInput = {
         'keyword': "&keyword=" + $("#keyword").val(),
         'city': "&city="+$("#city").val(),
@@ -67,14 +65,7 @@ $("#searchButton").click(function (e) {
         'radius': "&radius=50&unit=miles",
         'sort': "&sort=" + $("#sort").val(),
         propertyStringArray: ["keyword", "city", "type", "startDate", "genre", "sort"],
-
-        // Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-        // 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-        // 'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-        // 'venueName,asc', 'venueName,desc', 'random'
     }
-
-
 
     for (prop in userInput) {
         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
