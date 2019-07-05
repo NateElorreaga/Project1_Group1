@@ -1,27 +1,29 @@
 <!doctype html>
 <html lang="en">
 
-<title>EventEasy Home Page</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>EventEasy Home Page</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
-<script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
+  <script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
 
-<!-- firebase cdn -->
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <!-- firebase cdn -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
-<!--Google Fonts CDN-->
-<link
-  href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
-<!--External Stylesheet-->
-<link rel="stylesheet" href="assets/css/style.css">
+  <!--Google Fonts CDN-->
+  <link
+    href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
+
+  <!--External Stylesheet-->
+  <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
@@ -42,24 +44,19 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav text-right">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-glass-cheers"></i>
+              Home
+            </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="results.html">Tickets</a>
+            <a class="nav-link" href="results.html">
+              <i class="fas fa-guitar"></i>
+              Tickets
+            </a>
           </li>
-
-          <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
         </ul>
+      </div>
     </nav>
 
     <!-- Container Start -->
@@ -86,48 +83,26 @@
           <!-- slide 1 -->
           <div class="carousel-item active">
             <img class="carouselImages" src="assets/images/hands-up.png" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h3></h3>
-              <p></p>
-            </div>
           </div>
 
           <!-- slide 2 -->
           <div class="carousel-item">
             <img class="carouselImages" src="assets/images/mic-check.png" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h3></h3>
-              <p></p>
-            </div>
           </div>
 
           <!-- slide 3 -->
           <div class="carousel-item">
             <img class="carouselImages" src="assets/images/hotAirBalloon.jpg" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h3></h3>
-              <p></p>
-            </div>
           </div>
-
 
           <!-- slide 4 -->
           <div class="carousel-item">
             <img class="carouselImages" src="assets/images/farmersMarket.jpg" alt="Fourth slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h3></h3>
-              <p></p>
-            </div>
           </div>
-
 
           <!-- slide 5 -->
           <div class="carousel-item">
             <img class="carouselImages" src="assets/images/car show.jpg" alt="Fifth slide">
-            <div class="carousel-caption d-none d-md-block">
-              <h3></h3>
-              <p></p>
-            </div>
           </div>
         </div>
 
@@ -143,7 +118,7 @@
       </div>
       <!-- Carousel end -->
 
-      <!-- Search Link -->
+      <!-- card header-->
       <div class="card my-3 mx-auto">
         <div class="card-header text-light text-center">
           Looking for something to do?
@@ -166,13 +141,6 @@
                   <form>
                     <!-- input row 1 -->
                     <div class="form-row">
-                      <!-- <div class="form-group col-md-6">
-                        <label for="type">Search Type</label>
-                        <select id="type" class="form-control">
-                          <option selected value="events">Events</option>
-                          <option value="attractions">Attractions</option>
-                        </select>
-                      </div> -->
                       <div class="form-group col-6">
                         <label for="city">City</label>
                         <input type="text" class="form-control" id="city" placeholder="Enter city">
@@ -180,13 +148,6 @@
                       <div class="form-group col-md-6">
                         <label for="inputgenre">Catagories</label>
                         <input type="text" class="form-control" placeholder="Leave blank for more results" id="genre">
-
-                        <!-- <select id="genre" class="form-control">
-                          <option selected>Choose...</option>
-                          <option>Music</option>
-                          <option>Sports</option>
-                          <option>Arts & Theatre</option>
-                        </select> -->
                       </div>
                     </div>
                     <!-- input row 2 -->
@@ -196,50 +157,40 @@
                         <input type="text" class="form-control"
                           placeholder="Enter Keyword or leave blank for more results" id="keyword">
                       </div>
-
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                         <label for="sort">Sort Order</label>
                         <select id="sort" class="form-control">
-
                           <option selected>Choose...</option>
                           <option value="name,asc">Name</option>
                           <option value="date,asc">Date</option>
                           <option value="distance,asc">Distance</option>
                           <option value="random">Random</option>
-                          <!-- Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-                          'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-                          'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-                          'venueName,asc', 'venueName,desc', 'random' -->
                         </select>
                       </div>
                     </div>
-
-                    <div class="form-group col-6">
-                      <label for="startDate">Date of Event</label>
-                      <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
-                        max="2022-12-31">
+                    <!-- input row 3 -->
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                        <label for="startDate">Date of Event</label>
+                        <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
+                          max="2022-12-31">
+                      </div>
                     </div>
+                </div>
 
-                <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
+                <div class="modal-button m-5">
+                  <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" data-toggle="modal"
+                    data-target=".bd-example-modal-xl" id="searchButton">Submit</a>
+                </div>
+                </form>
               </div>
-              <div class="modal-button m-5">
-                <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" data-toggle="modal"
-                  data-target=".bd-example-modal-xl" id="searchButton">Submit</a>
-              </div>
-              </form>
             </div>
           </div>
         </div>
-        <!-- input form -->
-      </div>
-    </div>
-    <!-- Extra large modal end -->
+      </div> <!-- card end -->
+    </div> <!-- container end -->
+  </div> <!-- background div end -->
 
-  </div>
-  <!-- <div class="card-footer text-light text-center p-4" style="background-color: #000000;"> -->
-  <!-- Main container end -->
-  </div>
-  </div>
   <br>
   <br>
   <br>
@@ -257,14 +208,10 @@
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
 
-
   <!-- Bootstrap JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-  <!-- Compiled and minified JavaScript for maaterialize -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
   <!--Firebase CDN-->
   <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-database.js"></script>
