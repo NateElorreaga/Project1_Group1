@@ -44,11 +44,12 @@ var locationConversion = function (userInput) {
 
 $("#searchButton").click(function (e) {
     e.preventDefault();
+
     //-----------------------------------------------------------------------//
     //initializes ajax settings
     var settingsLocal = {
         // "url": "https://app.ticketmaster.com/discovery/v2/"+$("#type").val()+".json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
-        "url": "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
+        "url": 'https://app.ticketmaster.com/discovery/v2/events?apikey=aWc27nlXm2SrWeETzz1BHBWck4g20amR&locale=*&size=50&countryCode=US&preferredCountry=us',
         "method": "GET",
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
@@ -60,13 +61,12 @@ $("#searchButton").click(function (e) {
 
     var userInput = {
         'keyword': "&keyword=" + $("#keyword").val(),
-        'latlong': '',
-        'zipCode': "&postalCode="+$("#zipCode").val(),
+        'city': "&city="+$("#city").val(),
         'startDate': "&startDate=" + $("#startDate").val(),
         'genre': "&classificationName=" + $("#genre").val(),
         'radius': "&radius=50&unit=miles",
         'sort': "&sort=" + $("#sort").val(),
-        propertyStringArray: ["keyword", "zipCode", "type", "startDate", "genre", "sort"],
+        propertyStringArray: ["keyword", "city", "type", "startDate", "genre", "sort"],
 
         // Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
         // 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
@@ -78,22 +78,9 @@ $("#searchButton").click(function (e) {
 
     for (prop in userInput) {
         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
-        if($("#zipCode").val() === ''){userInput['zipCode']="&postalCode=84070"}
+        // if($("#zipCode").val() === ''){userInput['zipCode']="&postalCode=84070"}
         settingsLocal['url'] = settingsLocal['url'] + userInput[prop];
     };
-
-    // if ($("#zipCode").val() !== "") {
-    //     settingsLocal = urlCreator(locationConversion(userInput), settingsLocal);
-
-    // } else {
-    //     settingsLocal = urlCreator(userInput, settingsLocal);
-    // }
-
-
-    // userInput['geo'] =
-    // for looping over userInputs to make sure empty properties dont break the link with undefined
-    // and sets location default to sandy
-
 
     settings = { 'obj': JSON.stringify(settingsLocal) };
 
