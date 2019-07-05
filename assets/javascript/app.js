@@ -82,19 +82,6 @@ $("#searchButton").click(function (e) {
         settingsLocal['url'] = settingsLocal['url'] + userInput[prop];
     };
 
-    // if ($("#zipCode").val() !== "") {
-    //     settingsLocal = urlCreator(locationConversion(userInput), settingsLocal);
-
-    // } else {
-    //     settingsLocal = urlCreator(userInput, settingsLocal);
-    // }
-
-
-    // userInput['geo'] =
-    // for looping over userInputs to make sure empty properties dont break the link with undefined
-    // and sets location default to sandy
-
-
     settings = { 'obj': JSON.stringify(settingsLocal) };
 
     console.log(settingsLocal)
