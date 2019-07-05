@@ -44,11 +44,12 @@ var locationConversion = function (userInput) {
 
 $("#searchButton").click(function (e) {
     e.preventDefault();
+
     //-----------------------------------------------------------------------//
     //initializes ajax settings
     var settingsLocal = {
         // "url": "https://app.ticketmaster.com/discovery/v2/"+$("#type").val()+".json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
-        "url": 'https://app.ticketmaster.com/discovery/v2/events?apikey=aWc27nlXm2SrWeETzz1BHBWck4g20amR&locale=*&size=50&countryCode=US&stateCode=UT&preferredCountry=us',
+        "url": 'https://app.ticketmaster.com/discovery/v2/events?apikey=aWc27nlXm2SrWeETzz1BHBWck4g20amR&locale=*&size=50&countryCode=US&preferredCountry=us',
         "method": "GET",
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
