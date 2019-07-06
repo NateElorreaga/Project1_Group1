@@ -134,7 +134,7 @@ var appendResults = function (response, type) {
         var eventName = responseResults[i].name;
         var eventDate = responseResults[i].dates.start.localDate + " " + responseResults[i].dates.start.localTime;
         var imageURL = (responseResults[i].images[9].url);
-        //links to the URL to purchase tickets 
+        //var that links to the URL to purchase tickets 
         var linkURL = (responseResults[i].url);
     
         var date = moment(eventDate).format('MMMM Do YYYY, hh:mm a');
