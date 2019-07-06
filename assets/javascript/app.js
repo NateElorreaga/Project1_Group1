@@ -47,19 +47,18 @@ $("#searchButton").click(function (e) {
 
     //initializes ajax settings
     var settingsLocal = {
-        // "url": "https://app.ticketmaster.com/discovery/v2/"+$("#type").val()+".json?&apikey=wgvkeg8fAF8kBUpnimtGl3TRrktNnitx",
         "url": 'https://app.ticketmaster.com/discovery/v2/events?apikey=aWc27nlXm2SrWeETzz1BHBWck4g20amR&locale=*&size=50&countryCode=US&preferredCountry=us',
         "method": "GET",
         "error": function (response) {
             $("#errorText").text(JSON.stringify(response))
             $('#errorModal').modal('toggle')
         },
-        "type": "events" //$("#type").val()
+        "type": "events"
     }
 
     var userInput = {
         'keyword': "&keyword=" + $("#keyword").val(),
-        'city': "&city="+$("#city").val(),
+        'city': "&city=" + $("#city").val(),
         'startDate': "&startDate=" + $("#startDate").val(),
         'genre': "&classificationName=" + $("#genre").val(),
         'radius': "&radius=50&unit=miles",
@@ -69,7 +68,6 @@ $("#searchButton").click(function (e) {
 
     for (prop in userInput) {
         if ($("#" + prop).val() === undefined || $("#" + prop).val() === '' || $("#" + prop).val() === 'Choose...') { userInput[prop] = '' };
-        // if($("#zipCode").val() === ''){userInput['zipCode']="&postalCode=84070"}
         settingsLocal['url'] = settingsLocal['url'] + userInput[prop];
     };
 
@@ -136,7 +134,7 @@ var appendResults = function (response, type) {
         var imageURL = (responseResults[i].images[9].url);
         //var that links to the URL to purchase tickets 
         var linkURL = (responseResults[i].url);
-    
+
         var date = moment(eventDate).format('MMMM Do YYYY, hh:mm a');
 
         //made this var global so we can use it on any html
