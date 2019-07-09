@@ -124,8 +124,10 @@ var appendResults = function (response, type) {
 
     $(".card-group").empty();
     let responseResults = response._embedded[type]
+    console.log()
+    if (response === {}){$(".card-group").append('<div class="display-3">No results for search. There may be no events in this city.<div/>')}
 
-
+else {
     //-------------THIS LOOKS AWESOME!!!!!!!---------//
     for (var i = 0; i < responseResults.length; i++) {
         // var newRowReady = 3;
@@ -136,6 +138,7 @@ var appendResults = function (response, type) {
         var linkURL = (responseResults[i].url);
 
         var date = moment(eventDate).format('MMMM Do YYYY, hh:mm a');
+        if (date === "Invalid date"){date = ""}
 
         //made this var global so we can use it on any html
         resultDiv = `<div class="col-md-4 m-auto p-4">
@@ -150,7 +153,7 @@ var appendResults = function (response, type) {
         $(".card-group").append(resultDiv);
 
     };
-}
+}}
 
 $(document).ready(function () {
     getResponse()
