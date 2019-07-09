@@ -1,32 +1,28 @@
 <!doctype html>
 <html lang="en">
 
-<title>EventEasy</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
-<script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
-
-<!-- Compiled and minified CSS  -->
-<!--Google Fonts CDN-->
-<link
-  href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
-
-<!-- firebase cdn -->
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-
-<!-- Momment.js -->
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-<link rel="stylesheet" href="assets/css/style.css">
-
+<head>
+  <title>EventEasy</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="assets\css\fontawesome-free-5.9.0-web\css\all.css">
+  <script src="assets\css\fontawesome-free-5.9.0-web\js\all.min.js"></script>
+  <!--Google Fonts CDN-->
+  <link
+    href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
+  <!-- firebase cdn -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <!-- Momment.js -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- local css file -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -63,7 +59,6 @@
     <br>
     <br>
 
-
     <!-- Extra large modal -->
     <button id="searchButtonHomePage" type="button" class="btn btn-success btn-md btn-block w-75 mx-auto"
       data-toggle="modal" data-target=".bd-example-modal-xl">Search Events</button>
@@ -79,29 +74,16 @@
             <form>
               <!-- input row 1 -->
               <div class="form-row">
-                <!-- <div class="form-group col-md-6">
-                <label for="type">Search Type</label>
-                <select id="type" class="form-control">
-                  <option selected value="events">Events</option>
-                  <option value="attractions">Attractions</option>
-                </select>
-              </div> -->
                 <div class="form-group col-6">
                   <label for="city">City</label>
                   <input type="text" class="form-control" id="city" placeholder="Enter city">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputgenre">Catagories</label>
-                  <input type="text" class="form-control" placeholder="Leave blank for more results" id="genre">
-
-                  <!-- <select id="genre" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>Music</option>
-                  <option>Sports</option>
-                  <option>Arts & Theatre</option>
-                </select> -->
+                  <label for="inputgenre">Categories</label>
+                  <input type="text" class="form-control" placeholder="Music, Sports, Arts & Theatre or leave blank" id="genre">
                 </div>
               </div>
+
               <!-- input row 2 -->
               <div class="form-row">
                 <div class="form-group col-6">
@@ -109,52 +91,46 @@
                   <input type="text" class="form-control" placeholder="Enter Keyword or leave blank for more results"
                     id="keyword">
                 </div>
-
-                <div class="form-group col-md-4">
+                <div class="form-group col-6">
                   <label for="sort">Sort Order</label>
                   <select id="sort" class="form-control">
-
                     <option selected>Choose...</option>
                     <option value="name,asc">Name</option>
                     <option value="date,asc">Date</option>
                     <option value="distance,asc">Distance</option>
                     <option value="random">Random</option>
-                    <!-- Sorting order of the search result. Allowed values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 
-                  'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 
-                  'date,name,asc', 'date,name,desc', 'distance,date,asc', 'onSaleStartDate,asc', 'id,asc', 
-                  'venueName,asc', 'venueName,desc', 'random' -->
                   </select>
                 </div>
               </div>
+              
+              <!-- input row 3 -->
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="startDate">Date of Event</label>
+                  <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
+                    max="2022-12-31">
+                </div>
+              </div>
+
 
               <!-- <div class="form-group col-6">
                 <label for="startDate">Date of Event</label>
                 <input type="date" id="startDate" name="event-start" value="2019-07-22" min="2018-01-01"
                   max="2022-12-31">
               </div> -->
-          </div>
-          <!-- <button class="btn btn-success" type="button" id="searchButton">Get Results</button> -->
-        <div class="modal-button m-5">
-          <a href="results.html" class="btn btn-lg btn-block btn-dark" role="button" data-toggle="modal"
-            data-target=".bd-example-modal-xl" id="searchButton">Submit</a>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- input form -->
-  </div>
-  </div>
-  <!-- Extra large modal end -->
 
-  <!-- Container Start -->
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>
+
+  <!-- content Start -->
   <div class="container">
     <div class="card-group">
 
 
     </div>
-  </div>
-  <!-- Main container end -->
   </div>
   <br>
   <br>
@@ -172,14 +148,10 @@
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
 
-
   <!-- Bootstrap JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-  <!-- Compiled and minified JavaScript for maaterialize -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 
   <!--Firebase CDN-->
   <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-database.js"></script>
@@ -188,8 +160,7 @@
   <!--Moment.js CDN-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
+  <!-- local js file -->
   <script src="assets/javascript/app.js"></script>
 
 </body>
